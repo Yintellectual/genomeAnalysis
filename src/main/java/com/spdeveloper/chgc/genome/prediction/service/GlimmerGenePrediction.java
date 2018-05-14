@@ -11,7 +11,10 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
@@ -20,8 +23,13 @@ import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 
 @Service
 public class GlimmerGenePrediction {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	GenePredictionParser genePredictionParser;
+	
+	@Value("${cmdTemplate.glimmerGenePrediction}")
+	String cmdTemplate;
+	
 	
 	
 	@PostConstruct
@@ -36,6 +44,7 @@ public class GlimmerGenePrediction {
 			}else {
 				throw new MissDependencyException(comparisonReport);
 			}
+			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
 			FileUtils.deleteDirectory(tempDir.toFile());
 		}catch(Exception e){
 			throw new MissDependencyException("Glimmer is not working.", e);
@@ -44,7 +53,6 @@ public class GlimmerGenePrediction {
 	
 	
 	public List<GenePrediction> getGenePredictions(File fasta, Path tempDir) throws IOException, InterruptedException{
-		String cmdTemplate = " csh /fs/szgenefinding/Glimmer3/scripts/g3-iterated.csh %s %s";
 		IntegratedProgram glimmer = new IntegratedProgram(cmdTemplate, null);
 		Path glimmerTempFile = Files.createTempFile(tempDir, "genomeAnalysis", ".predict");
 		glimmer.execute(null, glimmerTempFile, fasta.getAbsolutePath(),  FilenameUtils.removeExtension(glimmerTempFile.toFile().getAbsolutePath()));
