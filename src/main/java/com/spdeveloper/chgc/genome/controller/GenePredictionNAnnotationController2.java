@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
+import com.spdeveloper.chgc.genome.prediction.service.GeneExtractor;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
 import com.spdeveloper.chgc.genome.prediction.service.GlimmerGenePrediction;
@@ -48,6 +49,8 @@ public class GenePredictionNAnnotationController2 {
 	GenePredictionParser genePredictionParser;
 	@Autowired
 	GenePredictionResultCombiner genePredictionResultCombiner;
+	@Autowired
+	GeneExtractor geneExtractor;
 	
 	@PostMapping("/genomeAnnotation2")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
@@ -65,13 +68,7 @@ public class GenePredictionNAnnotationController2 {
 		Path tempDir = Files.createTempDirectory("genomeAnalysis");
 		List<GenePrediction> genePrediction = genePredictionResultCombiner.combine(fastaFile, tempDir);
 		
-		Path geneXlsxFile = Paths.get("src", "main", "resources", "files", "fas", "Gene.xlsx");
-		WriteToFileUtil.writeToFile(genePrediction, geneXlsxFile);
-		
-	    List<String> geneFasData = ExecuteCommandAndReadResultingFile.getExtractor().executeAndReadResultingLines(fastaFile.getAbsolutePath(), geneXlsxFile.toFile().getAbsolutePath());
-	    Path geneFasFile = Paths.get("src", "main", "resources", "files", "fas", "Gene.fas");
-	    WriteToFileUtil.writeToFile(geneFasData, geneFasFile);
-		geneFasData = null;
+		Path geneFasFile = geneExtractor.extract(fastaFile, genePrediction, tempDir).toPath();
 	    
 	    List<String> translatedData = ExecuteCommandAndReadResultingFile.getTranslator().executeAndReadResultingLines(geneFasFile.toFile().getAbsolutePath());
 	    Path translatedFile = Paths.get("src", "main", "resources", "files", "fas", "Pr.fas");
