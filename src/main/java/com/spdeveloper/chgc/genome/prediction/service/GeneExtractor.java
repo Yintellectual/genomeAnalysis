@@ -54,7 +54,7 @@ public class GeneExtractor {
 		return extractorTempFile.toFile();
 	}
 	private Path writeToFile(List<GenePrediction> predictions) throws IOException {
-		Path path = Paths.get("root","gene.xlsx");
+		Path path = Paths.get("/","root","gene.xlsx");
 		WriteToFileUtil.writeToFile(predictions, path);
 		return path;
 	}
