@@ -27,8 +27,8 @@ public class GlimmerGenePrediction {
 	public void dependencyCheck() {
 		try {
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			List<GenePrediction> glimmerPrediction = getGenePredictions(Paths.get("src", "main", "recources", "files", "dependencyCheck", "short.fas").toFile(), tempDir);
-			List<GenePrediction> expected = genePredictionParser.parse(Paths.get("src", "main", "recources", "files", "dependencyCheck", "tag.predict"),GenePredictionParser::fromGlimmerPrediction);
+			List<GenePrediction> glimmerPrediction = getGenePredictions(Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas").toFile(), tempDir);
+			List<GenePrediction> expected = genePredictionParser.parse(Paths.get("src", "main", "resources", "files", "dependencyCheck", "tag.predict"),GenePredictionParser::fromGlimmerPrediction);
 			String comparisonReport = ComparisonUtil.diffs(expected.stream().map(g->g.toString()).toArray(String[]::new), glimmerPrediction.stream().map(g->g.toString()).toArray(String[]::new));
 			if(comparisonReport.contains("identical")) {
 				
