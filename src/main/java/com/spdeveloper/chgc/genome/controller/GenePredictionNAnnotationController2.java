@@ -30,7 +30,9 @@ import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
+import com.spdeveloper.chgc.genome.prediction.service.GlimmerGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.M7Parser;
+import com.spdeveloper.chgc.genome.prediction.service.ZcurveGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.M7Parser.BlastOutput;
 import com.spdeveloper.chgc.genome.prediction.service.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
@@ -44,6 +46,8 @@ public class GenePredictionNAnnotationController2 {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	GenePredictionParser genePredictionParser;
+	@Autowired
+	GenePredictionResultCombiner genePredictionResultCombiner;
 	
 	@PostMapping("/genomeAnnotation2")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
@@ -57,24 +61,9 @@ public class GenePredictionNAnnotationController2 {
 		OutputStream outStream = new FileOutputStream(fastaFile);
 		outStream.write(buffer);
 		outStream.close();
-		
-		
-		
-		
-		
-		
-		//gene prediction
-		List<String> glimmerPredictionFile = ExecuteCommandAndReadResultingFile.getGlimmerExecutor().executeAndReadResultingLines(fastaFile.getAbsolutePath());
-		List<String> zcurvePredictionFile = ExecuteCommandAndReadResultingFile.getZcurveExecutor().executeAndReadResultingLines(fastaFile.getAbsolutePath());
-		
-		List<GenePrediction> glimmerPrediction = genePredictionParser.parse(glimmerPredictionFile, GenePredictionParser::fromGlimmerPrediction);
-		List<GenePrediction> zcurvePrediction = genePredictionParser.parse(zcurvePredictionFile, GenePredictionParser::fromZcurvePrediction);
-		glimmerPredictionFile = null;
-		zcurvePredictionFile = null;
-		
-		List<GenePrediction> genePrediction = GenePredictionResultCombiner.combine(glimmerPrediction, zcurvePrediction);
-		glimmerPrediction = null;
-		zcurvePrediction = null;
+
+		Path tempDir = Files.createTempDirectory("genomeAnalysis");
+		List<GenePrediction> genePrediction = genePredictionResultCombiner.combine(fastaFile, tempDir);
 		
 		Path geneXlsxFile = Paths.get("src", "main", "resources", "files", "fas", "Gene.xlsx");
 		WriteToFileUtil.writeToFile(genePrediction, geneXlsxFile);

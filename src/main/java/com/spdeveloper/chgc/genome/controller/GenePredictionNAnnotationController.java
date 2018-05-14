@@ -43,6 +43,8 @@ public class GenePredictionNAnnotationController {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	GenePredictionParser genePredictionParser;
+	@Autowired
+	GenePredictionResultCombiner genePredictionResultCombiner;
 	
 	@PostMapping("/genomeAnnotation")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
@@ -66,7 +68,7 @@ public class GenePredictionNAnnotationController {
 		glimmerPredictionFile = null;
 		zcurvePredictionFile = null;
 		
-		List<GenePrediction> genePrediction = GenePredictionResultCombiner.combine(glimmerPrediction, zcurvePrediction);
+		List<GenePrediction> genePrediction = genePredictionResultCombiner.combine(glimmerPrediction, zcurvePrediction);
 		glimmerPrediction = null;
 		zcurvePrediction = null;
 		

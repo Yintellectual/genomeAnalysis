@@ -1,5 +1,8 @@
 package com.spdeveloper.chgc.genome.prediction.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,12 +13,26 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 
+@Service 
 public class GenePredictionResultCombiner {
-	private static final Logger log = LoggerFactory.getLogger(GenePredictionResultCombiner.class);
-	public static List<GenePrediction> combine(List<GenePrediction> one, List<GenePrediction> two) {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	@Autowired
+	GlimmerGenePrediction glimmerGenePrediction;
+	@Autowired
+	ZcurveGenePrediction zcurveGenePrediction;
+	
+	public List<GenePrediction> combine(File fasta, Path tempDir) throws IOException, InterruptedException{
+		return combine( 
+				glimmerGenePrediction.getGenePredictions(fasta, tempDir),
+				zcurveGenePrediction.getGenePredictions(fasta, tempDir));
+	}
+	
+	public List<GenePrediction> combine(List<GenePrediction> one, List<GenePrediction> two) {
 		TreeMap<Integer, GenePrediction> oneMap = toMap(one);
 		
 		TreeMap<Integer, GenePrediction> twoMap = toMap(two);
