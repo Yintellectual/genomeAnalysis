@@ -23,15 +23,10 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 
 public class GeneToProteinTranslate {
 
-	
-
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Value("${cmdTemplate.translate}")
 	String cmdTemplate;
-
-	@Autowired
-	GenePredictionResultCombiner genePredictionResultCombiner;
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
@@ -53,6 +48,10 @@ public class GeneToProteinTranslate {
 		}
 	}
 
+	public File translate(File geneFas, Path tempDir) throws IOException, InterruptedException {
+		return edit(translateOnly(geneFas, tempDir).toPath(), tempDir);
+	}
+	
 	public File translateOnly(File geneFas, Path tempDir) throws IOException, InterruptedException {
 		IntegratedProgram translate = new IntegratedProgram(cmdTemplate, null);
 		Path translateTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "rawPr.fas");

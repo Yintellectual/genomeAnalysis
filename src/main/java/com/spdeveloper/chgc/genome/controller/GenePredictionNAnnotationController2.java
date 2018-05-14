@@ -27,10 +27,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
+import com.spdeveloper.chgc.genome.annotation.service.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GeneExtractor;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
+import com.spdeveloper.chgc.genome.prediction.service.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.prediction.service.GlimmerGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.M7Parser;
 import com.spdeveloper.chgc.genome.prediction.service.ZcurveGenePrediction;
@@ -51,6 +53,11 @@ public class GenePredictionNAnnotationController2 {
 	GenePredictionResultCombiner genePredictionResultCombiner;
 	@Autowired
 	GeneExtractor geneExtractor;
+	@Autowired
+	GeneToProteinTranslate geneToProteinTranslate;
+	@Autowired
+	BlastAllProteinAnnotation blastAllProteinAnnotation;
+	
 	
 	@PostMapping("/genomeAnnotation2")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
@@ -70,22 +77,10 @@ public class GenePredictionNAnnotationController2 {
 		
 		Path geneFasFile = geneExtractor.extract(fastaFile, genePrediction, tempDir).toPath();
 	    
-	    List<String> translatedData = ExecuteCommandAndReadResultingFile.getTranslator().executeAndReadResultingLines(geneFasFile.toFile().getAbsolutePath());
-	    Path translatedFile = Paths.get("src", "main", "resources", "files", "fas", "Pr.fas");
-	    log.info("translatedData has "+translatedData.size()+" lines.");
-	    WriteToFileUtil.writeToFile(
-	    		translatedData.stream().map(s->{
-	    			if(s.startsWith(">")) {
-	    				return s.replaceAll("\\s+.*", "");
-	    			}else {
-	    				return s.replaceAll("^(V)", "M").replaceAll("^(L)", "M").replaceAll("(\\*)$", "");
-	    			}
-	    		}).collect(Collectors.toList())
-	    		, translatedFile);
-	    //gene annotation
-	    translatedData = null;
+	    Path translatedFile = geneToProteinTranslate.translate(geneFasFile.toFile(), tempDir).toPath();
 	    
-	    File m7File = ExecuteCommandAndReadResultingFile.getBlastall().executeAndReadResultingFile(translatedFile.toFile().getAbsolutePath()).toFile();
+	    File m7File = blastAllProteinAnnotation.blastAll(translatedFile.toFile(), tempDir);
+	    
 	    BlastOutput blastOutput = M7Parser.parse(m7File);
 	    Flux<PrMatch> prMatches = Flux.fromIterable(blastOutput.getBlastOutput_iterations().getPrMatchs());
 	    
