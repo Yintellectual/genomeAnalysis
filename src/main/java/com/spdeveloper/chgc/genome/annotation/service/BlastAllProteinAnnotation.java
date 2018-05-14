@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
 import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
@@ -22,6 +23,7 @@ import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 
+@Service
 public class BlastAllProteinAnnotation {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
