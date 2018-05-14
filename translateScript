@@ -1,0 +1,2 @@
+#!/bin/bash
+perl /root/translate.pl $1 > $2

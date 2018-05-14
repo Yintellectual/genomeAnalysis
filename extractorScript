@@ -1,0 +1,2 @@
+#!/bin/bash
+/fs/szgenefinding/Glimmer3/bin/extract $1 $2 > Gene.fas

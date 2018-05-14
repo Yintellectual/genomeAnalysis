@@ -1,0 +1,13 @@
+<config>
+    <inputFile>/Users/tomek/work/mystuff/input.csv</inputFile>
+    <truststoreFile>/Users/tomek/work/mystuff/truststore.ts</truststoreFile>
+    <keystoreFile>/Users/tomek/work/mystuff/CN-user.jks</keystoreFile>
+ 
+    <!-- ssl stores passwords-->
+    <truststorePassword>password</truststorePassword>
+    <keystorePassword>password</keystorePassword>
+ 
+    <!-- user credentials -->
+    <user>user</user>
+    <password>secret</password>
+</config>

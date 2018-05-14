@@ -1,0 +1,934 @@
+1848107
+ORF_0013	-	+	15606	14449	Esterase/lipase	
+ORF_0014	V	+	17819	15714	peptide ABC transporter permease 	
+ORF_0016	S	+	19409	18705	Mg2+ transporter 	
+ORF_0017	L	+	19937	19743	transposase 	
+ORF_0018	L	+	20764	19985	transposase 	
+ORF_0022	M	+	25752	24325	lysin 	
+ORF_0027	K	+	31184	28419	helicase 	
+ORF_0041	-	+	43174	43028	conserved hypothetical protein	
+ORF_0042	-	+	43468	43256	conserved hypothetical protein	
+ORF_0043	-	+	44057	43455	conserved hypothetical protein	
+ORF_0046	K	+	46491	46006	RNA polymerase sigma factor 	
+ORF_0047	G	+	47599	46919	glycerol uptake facilitator related permease (major Intrinsic protein family) 	
+ORF_0052	-	+	52918	52397	conserved hypothetical protein	
+ORF_0054	T	+	54429	53929	EAL domain containing protein	
+ORF_0060	-	+	58655	58467	transposase 	
+ORF_0061	R	+	59483	58938	Substrate-specific component BioY of biotin ECF transporter	
+ORF_0076	H	+	72989	71988	lactate dehydrogenase 	
+ORF_0077	C	+	74070	73279	oxidoreductase 	
+ORF_0078	-	+	74438	74139	Lactate dehydrogenase 	
+ORF_0080	P	+	75987	75106	substrate binding protein 	
+ORF_0081	T	+	76494	76015	S-ribosylhomocysteinase 	
+ORF_0082	E	+	77505	76672	homoserine O-succinyltransferase 	
+ORF_0083	L	+	78170	77823	transposase 	
+ORF_0084	L	+	78429	78121	transposase 	
+ORF_0085	L	+	78859	78395	transposase 	
+ORF_0086	I	+	79669	79370	acyl-CoA dehydrogenase 	
+ORF_0087	V	+	81409	79832	ABC transporter ATP-binding protein/permease 	
+ORF_0088	V	+	82968	81406	ABC transporter ATP-binding protein/permease 	
+ORF_0089	L	+	85009	83111	Recombination inhibitory protein MutS2	
+ORF_0090	-	+	85791	85090	conserved hypothetical protein	
+ORF_0091	K	+	86997	86008	LysR family transcriptional regulator 	
+ORF_0095	C	+	90275	89352	L-lactate dehydrogenase 	
+ORF_0096	G	+	92220	90994	Major facilitator superfamily permease 	
+ORF_0097	S	+	92963	92421	Sugar specific permease 	
+ORF_0099	K	+	95099	94185	Transcription regulator 	
+ORF_0105	I	+	98269	97406	Phospho-beta-glycosidase 	
+ORF_0106	M	+	98887	98285	glycosyl transferase 	
+ORF_0107	-	+	99171	98884	conserved hypothetical protein	
+ORF_0108	M	+	100090	99266	glycosyltransferase 	
+ORF_0109	I	+	100930	100118	conserved hypothetical protein	
+ORF_0121	R	+	111163	110795	pyridoxine 5'-phosphate oxidase V related favin-nucleotide-binding protein 	
+ORF_0124	P	+	112705	112037	ABC-type cobalt transport system, permease CbiQ related transporter 	
+ORF_0125	P	+	114070	112715	Putative ATP Protein in ABC transporter 	
+ORF_0132	-	+	121621	120782	transcriptional regulator 	
+ORF_0133	O	+	122665	121766	Putative heat shock protease 	
+ORF_0134	S	+	123236	122682	LemA protein	
+ORF_0135	P	+	124539	123394	cation transporter 	
+ORF_0141	E	+	129064	128303	ABC transporter ATPase 	
+ORF_0142	E	+	130651	129068	Putative glutamine ABC transporter 	
+ORF_0143	L	+	131665	131039	Putative 3-methyladenine DNA glycosylase 	
+ORF_0145	K	+	132804	132106	Putative transcriptional regulator 	
+ORF_0147	I	+	134929	133466	cardiolipin synthase 	
+ORF_0148	R	+	135875	134931	cell surface hydrolase (putative)	
+ORF_0150	S	+	137779	136823	Extracellular protein 	
+ORF_0156	T	+	142920	142270	Transcription regulatory protein 	
+ORF_0157	R	+	144289	142958	conserved hypothetical protein	
+ORF_0166	G	+	154414	151409	Alpha-glucosidase 	
+ORF_0168	F	+	156654	156181	nucleoside deoxyribosyltransferase 	
+ORF_0170	T	+	158114	157317	protein tyrosine/serine phosphatase 	
+ORF_0176	E	+	164530	162905	peptide binding protein 	
+ORF_0188	P	+	180312	178282	K+ transporter 	
+ORF_0189	-	+	180896	180480	conserved hypothetical protein	
+ORF_0190	-	+	181960	181013	conserved hypothetical protein	
+ORF_0196	R	+	188020	187448	NAD(P)-dependent oxidoreductase 	
+ORF_0197	R	+	188243	188025	dehydrogenase related protein	
+ORF_0198	-	+	189209	188460	conserved hypothetical protein	
+ORF_0206	-	+	197954	197799	Transcriptional regulator, MerR family	
+ORF_0207	-	+	198730	198614	conserved hypothetical protein	
+ORF_0221	-	+	207724	207602	hypothetical protein	
+ORF_0225	-	+	211023	210811	conserved hypothetical protein	
+ORF_0230	-	+	214751	214623	hypothetical protein	
+ORF_0239	E	+	223982	222669	aminopeptidase 	
+ORF_0240	E	+	225347	224034	Aminopeptidase 	
+ORF_0241	O	+	225869	225444	small heat shock protein 	
+ORF_0243	F	+	227932	226643	adenylosuccinate synthetase 	
+ORF_0248	F	+	231930	230953	Xanthine/uracil permease 	
+ORF_0249	F	+	232245	231943	xanthine/uracil permease 	
+ORF_0250	F	+	232844	232275	xanthine phosphoribosyltransferase 	
+ORF_0257	K	+	242029	241187	AraC-like transcriptional regulator 	
+ORF_0260	R	+	245166	243904	ATP-grasp protein 	
+ORF_0261	K	+	246225	245260	transcriptional regulator 	
+ORF_0262	-	+	246498	246376	amino acid transporter 	
+ORF_0263	E	+	246692	246495	S-methylmethionine permease	
+ORF_0264	E	+	247153	246698	Amino acid transport protein 	
+ORF_0273	H	+	254167	252644	nicotinate phosphoribosyltransferase 	
+ORF_0274	L	+	254894	254187	transposase, is30 family 	
+ORF_0275	L	+	255215	254910	transposase 	
+ORF_0276	Q	+	255931	255377	nicotinamidase 	
+ORF_0278	S	+	257389	257123	conserved hypothetical protein	
+ORF_0279	F	+	258261	257485	NUDIX family hydrolase 	
+ORF_0283	-	+	262278	261478	ABC transporter permease 	
+ORF_0284	P	+	262985	262275	ABC transporter ATP-binding protein 	
+ORF_0302	R	+	281918	280605	HD superfamily phosphohydrolase 	
+ORF_0312	R	+	291862	291164	conserved hypothetical protein	
+ORF_0330	-	+	311945	311319	DeoR family transcriptional regulator 	
+ORF_0337	-	+	324048	323488	conserved hypothetical protein	
+ORF_0338	R	+	324500	324339	conserved hypothetical protein	
+ORF_0376	-	+	346950	346828	conserved hypothetical protein	
+ORF_0381	G	+	350303	349623	MFS transporter 	
+ORF_0382	G	+	350728	350300	MFS transporter 	
+ORF_0417	-	+	385912	385490	Carbamoyl-phosphate synthase large chain (EC 6.3.5.5)	
+ORF_0418	F	+	386343	385936	carbamoyl-phosphate synthase large subunit 	
+ORF_0424	E	+	391188	389848	branched chain amino acid ABC transporter carrier protein 	
+ORF_0437	C	+	401994	399091	phosphoenolpyruvate carboxylase 	
+ORF_0438	R	+	402931	401987	AEC family permease 	
+ORF_0440	-	+	404915	404793	major facilitator transporter 	
+ORF_0443	-	+	407653	407288	conserved hypothetical protein	
+ORF_0448	G	+	411781	410582	permease 	
+ORF_0449	R	+	412634	411921	integral membrane protein, interacts with FtsH 	
+ORF_0455	F	+	418010	417384	uridine kinase 	
+ORF_0456	F	+	418666	418010	uridine kinase 	
+ORF_0478	E	+	441883	440591	amino acid permease 	
+ORF_0486	E	+	451787	449700	Ornithine decarboxylase 	
+ORF_0487	-	+	452069	451827	conserved hypothetical protein	
+ORF_0489	-	+	454231	454037	conserved hypothetical protein	
+ORF_0491	S	+	455996	455517	Teichoic acid glycosylation protein	
+ORF_0492	C	+	456435	455989	flavodoxin 	
+ORF_0496	-	+	459706	459425	conserved hypothetical protein	
+ORF_0498	J	+	462554	461172	tRNA (uracil-5-)-methyltransferase related enzyme 	
+ORF_0501	-	+	464492	464025	conserved hypothetical protein	
+ORF_0504	-	+	467318	467130	conserved hypothetical protein	
+ORF_0505	Q	+	468524	467340	multicopper oxidase 	
+ORF_0506	Q	+	469011	468493	Blue copper oxidase CueO precursor	
+ORF_0507	-	+	469502	469299	conserved hypothetical protein	
+ORF_0508	O	+	471759	469693	ATP-dependent Clp protease, ATP-binding subunit 	
+ORF_0515	-	+	477406	476762	dithiol-disulfide isomerase 	
+ORF_0516	S	+	478089	477487	Adenylate cyclase	
+ORF_0520	-	+	480801	480613	putative membrane protein 	
+ORF_0521	V	+	481700	480873	UDP-diphosphatase 	
+ORF_0522	G	+	482733	481723	3-carboxymuconate cyclase 	
+ORF_0536	S	+	497948	497289	conserved hypothetical protein	
+ORF_0557	U	+	519715	519131	ATP-dependent Clp protease proteolytic subunit 	
+ORF_0569	-	+	529370	528801	conserved hypothetical protein	
+ORF_0570	R	+	530251	529367	HAD family hydrolase 	
+ORF_0574	L	+	533213	532677	exonuclease 	
+ORF_0601	E	+	555071	553440	amino acid permease 	
+ORF_0604	P	+	557689	556808	ABC transporter solute-binding component 	
+ORF_0618	M	+	570832	568610	alkaline phosphatase 	
+ORF_0625	M	+	577761	576406	UDP-N-acetylmuramoylalanyl-D-glutamate-2, 6-diaminopimelate ligase 	
+ORF_0644	T	+	592396	591935	universal stress protein UspA 	
+ORF_0645	-	+	592739	592455	conserved hypothetical protein	
+ORF_0646	L	+	594394	593090	recombination factor protein RarA 	
+ORF_0647	S	+	594855	594391	conserved hypothetical protein	
+ORF_0648	J	+	595591	594980	30S ribosomal protein S4 	
+ORF_0653	-	+	600975	600850	conserved hypothetical protein	
+ORF_0661	-	+	609039	608917	conserved hypothetical protein	
+ORF_0688	R	+	636820	635141	Metallo-b-lactamase superfamily protein 	
+ORF_0689	S	+	637043	636810	conserved hypothetical protein	
+ORF_0690	J	+	637776	637222	peptide deformylase 	
+ORF_0700	J	+	648035	647784	30S ribosomal protein S20 	
+ORF_0708	-	+	656889	656296	Esterase/lipase	
+ORF_0709	-	+	657905	657069	beta-carotene 15,15-monooxygenase 	
+ORF_0710	-	+	658179	658039	conserved hypothetical protein	
+ORF_0713	-	+	661337	660960	conserved hypothetical protein	
+ORF_0725	L	+	678972	678520	transposase 	
+ORF_0726	-	+	679743	678997	transposase 	
+ORF_0727	E	+	680465	680067	methionine synthase 	
+ORF_0728	K	+	681991	680738	Aminotransferase 	
+ORF_0737	F	+	690950	690012	inosine-uridine preferring nucleoside hydrolase 	
+ORF_0746	-	+	702396	702121	conserved hypothetical protein	
+ORF_0747	-	+	702781	702602	conserved hypothetical protein	
+ORF_0751	E	+	704762	704223	glutamate 5-kinase 	
+ORF_0752	-	+	705280	705080	conserved hypothetical protein	
+ORF_0756	P	+	712501	712157	conserved hypothetical protein	
+ORF_0757	-	+	712729	712544	conserved hypothetical protein	
+ORF_0758	-	+	713237	712686	acyltransferase 	
+ORF_0773	K	+	728279	727344	transcriptional regulator 	
+ORF_0776	-	+	729727	729530	conserved hypothetical protein	
+ORF_0793	S	+	754445	753939	Transcriptional regulator	
+ORF_0800	-	+	762496	761861	conserved hypothetical protein	
+ORF_0801	-	+	762860	762741	transposase 	
+ORF_0804	-	+	765583	764330	transposase 	
+ORF_0819	-	+	779390	778770	conserved hypothetical protein	
+ORF_0824	C	+	781850	781464	Alcohol dehydrogenase (EC 1.1.1.1); Acetaldehyde dehydrogenase (EC 1.2.1.10)	
+ORF_0825	C	+	782608	781844	alcohol dehydrogenase 	
+ORF_0826	C	+	783134	782619	Alcohol dehydrogenase (EC 1.1.1.1); Acetaldehyde dehydrogenase (EC 1.2.1.10)	
+ORF_0827	-	+	783386	783159	conserved hypothetical protein	
+ORF_0829	E	+	790315	789878	asparagine synthase 	
+ORF_0830	E	+	791460	790276	Asparagine synthase (glutamine-hydrolyzing) 	
+ORF_0835	T	+	796253	795561	two-component response regulator 	
+ORF_0836	-	+	796746	796468	conserved hypothetical protein	
+ORF_0838	-	+	797237	796959	conserved hypothetical protein	
+ORF_0846	M	+	804505	804359	conserved hypothetical protein	
+ORF_0850	R	+	806520	805864	NUDIX family hydrolase	
+ORF_0853	I	+	808212	807661	Putative Nudix hydrolase YfcD (EC 3.6.-.-)	
+ORF_0854	S	+	808828	808574	conserved hypothetical protein	
+ORF_0855	S	+	809535	808825	conserved hypothetical protein	
+ORF_0856	P	+	810479	809712	cobalt ABC transporter ATPase 	
+ORF_0857	P	+	811287	810469	ABC transporter ATP-binding protein 	
+ORF_0858	P	+	812042	811266	ABC transporter permease 	
+ORF_0859	T	+	812674	812039	Substrate-specific component STY3230 of queuosine-regulated ECF transporter	
+ORF_0873	S	+	821221	820583	Acyl-phosphate:glycerol-3-phosphate O-acyltransferase PlsY	
+ORF_0877	C	+	827980	827003	Isopentenyl diphosphate isomerase 	
+ORF_0878	I	+	829121	828039	phosphomevalonate kinase 	
+ORF_0879	I	+	830157	829198	mevalonate diphosphate decarboxylase 	
+ORF_0880	I	+	831118	830207	Mevalonate kinase 	
+ORF_0889	E	+	845836	845432	esterase 	
+ORF_0890	-	+	846183	845854	conserved hypothetical protein	
+ORF_0891	H	+	847344	846343	D-isomer Specific 2-hydroxyacid Dehydrogenase	
+ORF_0892	E	+	849322	847394	acylaminoacyl peptidase 	
+ORF_0893	M	+	851796	849469	penicillin-binding protein 1A 	
+ORF_0894	R	+	852415	851783	Holliday junction-specific endonuclease 	
+ORF_0909	K	+	867879	866188	Fibronectin-binding protein 	
+ORF_0912	R	+	871056	870145	DMT permease 	
+ORF_0913	E	+	871957	871280	phosphoglycerate dehydrogenase 	
+ORF_0914	E	+	872460	871954	phosphoglycerate dehydrogenase 	
+ORF_0915	H	+	873456	872479	Phosphoserine aminotransferase 	
+ORF_0917	-	+	874739	874599	ABC transporter 	
+ORF_0918	-	+	874887	874732	ABC transporter permease protein	
+ORF_0919	C	+	875589	875071	Oxygen-insensitive NADPH nitroreductase (EC 1.-.-.-)	
+ORF_0923	L	+	879033	877957	tyrosine recombinase XerS 	
+ORF_0929	M	+	884430	883870	Oxidoreductase 	
+ORF_0931	-	+	887475	886657	conserved hypothetical protein	
+ORF_0932	R	+	888743	887478	N-acetyl-L,L-diaminopimelate deacetylase (EC 3.5.1.47)	
+ORF_0933	F	+	890010	888988	Adenosine deaminase 	
+ORF_0939	E	+	897073	895673	peptide binding protein 	
+ORF_0941	V	+	898815	898531	ABC transporter transmembrane protein 	
+ORF_0942	F	+	902004	898966	carbamoyl phosphate synthase large subunit 	
+ORF_0943	F	+	902964	902161	Carbamoyl-phosphate synthase, small subunit 	
+ORF_0944	F	+	903242	903066	Carbamoyl-phosphate synthase , small chain 	
+ORF_0947	V	+	905402	904116	multidrug efflux protein 	
+ORF_0952	R	+	908676	908329	Putative acetyltransferase 	
+ORF_0961	-	+	914977	914831	conserved hypothetical protein	
+ORF_0964	-	+	917921	917733	Prophage ps3 protein 01	
+ORF_0965	-	+	918342	918133	phage-associated protein 	
+ORF_0966	-	+	919397	919272	hypothetical protein	
+ORF_0967	J	+	920237	919680	acetyltransferase 	
+ORF_0968	-	+	920639	920463	N-acetylmuramoyl-L-alanine amidase 	
+ORF_0975	-	+	925868	924840	fumarate reductase (flavoprotein) 	
+ORF_0976	C	+	926310	925825	Fumarate reductase flavoprotein subunit (EC 1.3.99.1)	
+ORF_0978	M	+	929617	927743	ABC transporter permease 	
+ORF_0979	V	+	930392	929640	ABC transporter ATP-binding protein 	
+ORF_0980	-	+	930880	930554	conserved hypothetical protein	
+ORF_0981	T	+	931492	931094	protein-tyrosine-phosphatase 	
+ORF_0982	-	+	931999	931505	conserved hypothetical protein	
+ORF_0983	-	+	932502	932038	conserved hypothetical protein	
+ORF_0984	-	+	933234	932719	ABC transporter, intermembrane subunit precursor 	
+ORF_0986	L	+	935015	934374	integrase 	
+ORF_0987	K	+	935835	935350	transcriptional regulator 	
+ORF_0988	-	+	936554	936279	conserved hypothetical protein	
+ORF_0989	K	+	937015	936584	multidrug efflux pump transcriptional regulator 	
+ORF_0991	-	+	938596	938441	conserved hypothetical protein	
+ORF_0992	T	+	938829	938593	conserved hypothetical protein	
+ORF_0997	H	+	944551	944042	Methyltransferase 	
+ORF_0998	-	+	944879	944691	conserved hypothetical protein	
+ORF_0999	-	+	946979	945039	conserved hypothetical protein	
+ORF_1000	-	+	950792	946983	conserved hypothetical protein	
+ORF_1001	E	+	951361	950996	D-isomer specific 2-hydroxyacid dehydrogenase 	
+ORF_1002	H	+	951864	951424	D-2-hydroxyacid dehydrogenase 	
+ORF_1006	P	+	956453	956145	Rhodanese-like domain protein	
+ORF_1007	L	+	956896	956498	Ribonuclease H 	
+ORF_1008	L	+	957620	956913	DNA invertase 	
+ORF_1009	L	+	958482	958057	Putative ribonuclease H 	
+ORF_1010	R	+	959714	959448	acetyltransferase	
+ORF_1011	R	+	960435	959716	phosphatase 	
+ORF_1012	-	+	960936	960772	conserved hypothetical protein	
+ORF_1013	-	+	961459	961250	FMN-binding protein 	
+ORF_1014	-	+	961679	961491	response regulator 	
+ORF_1015	-	+	961995	961657	response regulator 	
+ORF_1016	L	+	962897	962112	DNA polymerase III subunit epsilon 	
+ORF_1017	S	+	963501	962902	conserved hypothetical protein	
+ORF_1018	-	+	964281	963508	conserved hypothetical protein	
+ORF_1019	M	+	964561	964274	acyltransferase 	
+ORF_1023	R	+	969847	967814	Bipolar DNA helicase HerA	
+ORF_1024	-	+	971135	969840	conserved hypothetical protein	
+ORF_1025	O	+	971301	971155	ATP-dependent Lon protease 	
+ORF_1026	V	+	973443	972514	restriction endonuclease family protein 	
+ORF_1027	-	+	974166	973978	hypothetical protein	
+ORF_1028	V	+	977556	974227	putative uncharacterized protein 	
+ORF_1029	-	+	977668	977522	Restriction modification system DNA specificity domain 	
+ORF_1030	V	+	979284	978094	Type I restriction-modification system, specificity subunit S (EC 3.1.21.3)	
+ORF_1031	V	+	981997	979277	type I restriction-modification system, M subunit 	
+ORF_1032	L	+	982472	982263	protein 	
+ORF_1034	-	+	984792	984601	conserved hypothetical protein	
+ORF_1035	V	+	985690	984842	Muramoyltetrapeptide carboxypeptidase 	
+ORF_1036	J	+	987160	985736	RNA methyltransferase 	
+ORF_1037	-	+	988127	987153	conserved hypothetical protein	
+ORF_1038	-	+	988867	988127	conserved hypothetical protein	
+ORF_1039	-	+	989154	988978	conserved hypothetical protein	
+ORF_1040	O	+	989933	989322	pyroglutamyl-peptidase I 	
+ORF_1042	E	+	991232	990837	homoserine O-succinyltransferase 	
+ORF_1043	E	+	991691	991239	homoserine O-succinyltransferase 	
+ORF_1044	C	+	993348	991918	nADP-dependent glyceraldehyde-3-phosphate dehydrogenase gapn 	
+ORF_1045	M	+	994969	993449	glycine betaine ABC transporter substrate binding / permease 	
+ORF_1046	E	+	995896	994973	glycine betaine ABC transporter ATP-binding protein 	
+ORF_1050	O	+	998531	997620	protease htpX-like protein 	
+ORF_1051	E	+	1000066	999251	Cystathionase 	
+ORF_1052	E	+	1000427	1000047	bifunctional beta-cystathionase/maltose regulon repressor 	
+ORF_1053	O	+	1006108	1000697	proteinase precursor 	
+ORF_1054	E	+	1006994	1006560	acetyltransferase 	
+ORF_1055	-	+	1007645	1007145	conserved hypothetical protein	
+ORF_1059	L	+	1012479	1011175	transposase 	
+ORF_1060	L	+	1013665	1012616	transposase 	
+ORF_1061	L	+	1015211	1013988	transposase 	
+ORF_1062	K	+	1016292	1015624	Galactose operon repressor, GalR-LacI family of transcriptional regulators	
+ORF_1063	K	+	1016570	1016271	Galactose operon repressor, GalR-LacI family of transcriptional regulators	
+ORF_1064	G	+	1019689	1016663	beta-galactosidase 	
+ORF_1065	G	+	1021576	1019693	sodium:beta-glucoside symporter 	
+ORF_1066	-	+	1021927	1021742	transposase 	
+ORF_1068	-	+	1024274	1023537	transposase 	
+ORF_1069	-	+	1024793	1024485	transposase 	
+ORF_1070	R	+	1025355	1025020	Thiogalactoside transacetylase 	
+ORF_1071	-	+	1025609	1025382	galactoside O-acetyltransferase 	
+ORF_1072	R	+	1025989	1025678	cell surface hydrolase (putative)	
+ORF_1076	E	+	1029500	1028262	peptidase T 	
+ORF_1077	S	+	1030341	1029544	conserved hypothetical protein	
+ORF_1078	R	+	1031026	1030334	Putative tRNA-m1A22 methylase	
+ORF_1081	L	+	1032812	1032483	transcriptional regulator, AraC family, partial 	
+ORF_1082	-	+	1033033	1032809	transcriptional regulator, AraC family, partial 	
+ORF_1083	F	+	1033541	1033134	methylated DNA-protein cysteine methyltransferase 	
+ORF_1084	O	+	1036100	1033986	ATP-dependent protease La (EC 3.4.21.53) Type I	
+ORF_1085	-	+	1038700	1036115	conserved hypothetical protein	
+ORF_1086	-	+	1042204	1038713	restriction endonuclease 	
+ORF_1087	-	+	1045753	1042217	ATPase 	
+ORF_1088	S	+	1049191	1047098	conserved hypothetical protein	
+ORF_1089	-	+	1049493	1049314	conserved hypothetical protein	
+ORF_1091	L	+	1051319	1050096	transposase 	
+ORF_1094	P	+	1054733	1052445	ATPase 	
+ORF_1095	-	+	1055723	1055478	conserved hypothetical protein	
+ORF_1098	K	+	1057760	1056624	RNA polymerase sigma factor RpoD 	
+ORF_1099	K	+	1058917	1057796	RNA polymerase sigma factor RpoD 	
+ORF_1100	K	+	1060077	1058959	RNA polymerase sigma factor RpoD 	
+ORF_1101	L	+	1061887	1060049	DNA primase 	
+ORF_1102	J	+	1063985	1061919	glycine-tRNA synthetase subunit beta 	
+ORF_1103	J	+	1064889	1063978	glycyl-tRNA synthetase subunit alpha 	
+ORF_1104	L	+	1065903	1065154	DNA repair protein RecO (recombination protein O) 	
+ORF_1105	R	+	1066808	1065903	GTP-binding protein Era 	
+ORF_1106	F	+	1067211	1066792	cytidine deaminase 	
+ORF_1107	R	+	1067737	1067213	Metal-dependent hydrolase YbeY, involved in rRNA and/or ribosome maturation and assembly	
+ORF_1108	T	+	1068723	1067737	phosphate starvation-inducible protein PhoH 	
+ORF_1109	J	+	1069014	1068838	30S ribosomal protein S21 	
+ORF_1111	-	+	1070370	1070101	conserved hypothetical protein	
+ORF_1112	S	+	1071320	1070436	Integral membrane protein	
+ORF_1113	-	+	1072657	1072481	conserved hypothetical protein	
+ORF_1114	U	+	1073001	1072753	conserved hypothetical protein	
+ORF_1115	E	+	1074429	1073245	aromatic amino acid aminotransferase 	
+ORF_1116	E	+	1075921	1074611	diaminopimelate decarboxylase 	
+ORF_1117	-	+	1076391	1076278	conserved hypothetical protein	
+ORF_1118	G	+	1077695	1076799	mutarotase 	
+ORF_1119	O	+	1079171	1077777	ATP dependent protease, ATP binding unit, heatshock protein 	
+ORF_1120	O	+	1079707	1079174	ATP-dependent protease peptidase subunit 	
+ORF_1121	L	+	1080703	1079816	tyrosine recombinase XerC 	
+ORF_1122	J	+	1082022	1080703	tRNA (uracil-5-)-methyltransferase 	
+ORF_1123	L	+	1084337	1082154	DNA topoisomerase I 	
+ORF_1124	U	+	1085303	1084464	SMF protein 	
+ORF_1125	L	+	1086171	1085401	Ribonuclease HII 	
+ORF_1126	R	+	1087018	1086161	GTP binding protein 	
+ORF_1127	S	+	1087323	1087093	conserved hypothetical protein	
+ORF_1128	S	+	1088187	1087327	Putative family protein 	
+ORF_1130	J	+	1090184	1088994	tRNA CCA-pyrophosphorylase 	
+ORF_1132	-	+	1091699	1091205	conserved hypothetical protein	
+ORF_1133	-	+	1092194	1092003	conserved hypothetical protein	
+ORF_1134	-	+	1092503	1092225	conserved hypothetical protein	
+ORF_1135	V	+	1094442	1092670	ABC transporter ATPase 	
+ORF_1136	V	+	1096181	1094439	ABC transporter transmembrane protein 	
+ORF_1138	-	+	1098373	1097549	conserved hypothetical protein	
+ORF_1140	S	+	1100138	1099302	DegV family protein	
+ORF_1144	-	+	1104376	1103768	conserved hypothetical protein	
+ORF_1145	-	+	1104601	1104458	conserved hypothetical protein	
+ORF_1148	K	+	1108050	1107196	transcriptional regulator 	
+ORF_1151	R	+	1112742	1111609	permease 	
+ORF_1152	H	+	1113885	1112860	branched-chain amino acid aminotransferase 	
+ORF_1153	P	+	1114974	1114087	cobalt transporter 	
+ORF_1155	F	+	1115995	1115468	adenine phosphoribosyltransferase 	
+ORF_1156	L	+	1118261	1115985	ssDNA-specific exonuclease RecJ 	
+ORF_1157	M	+	1118878	1118258	sortase 	
+ORF_1158	M	+	1120778	1118940	GTP-binding protein LepA 	
+ORF_1159	O	+	1122036	1120900	chaperone protein dnaJ 	
+ORF_1160	O	+	1123963	1122119	molecular chaperone DnaK 	
+ORF_1161	O	+	1124640	1124023	heat shock protein GrpE 	
+ORF_1162	K	+	1125698	1124652	heat-inducible transcription repressor 	
+ORF_1163	H	+	1126774	1125836	riboflavin biosynthesis protein RibF 	
+ORF_1164	L	+	1127445	1126888	Integrase-like protein 	
+ORF_1169	L	+	1130226	1129003	transposase 	
+ORF_1171	E	+	1131547	1130882	5,10-methylenetetrahydrofolate reductase 	
+ORF_1172	E	+	1134050	1131765	5-methyl tetrahydropteroyltriglutamate--homocysteine methyltransferase 	
+ORF_1173	T	+	1134677	1134204	S-ribosylhomocysteinase 	
+ORF_1176	J	+	1141667	1140771	tRNA pseudouridine synthase B 	
+ORF_1177	J	+	1142080	1141718	ribosome-binding factor A 	
+ORF_1178	J	+	1144570	1142093	translation initiation factor IF-2 	
+ORF_1179	J	+	1144859	1144575	ribosomal protein 	
+ORF_1180	K	+	1145185	1144886	conserved hypothetical protein	
+ORF_1181	K	+	1146415	1145195	transcription elongation factor NusA 	
+ORF_1182	S	+	1146911	1146435	conserved hypothetical protein	
+ORF_1183	L	+	1151256	1147021	DNA polymerase III subunit alpha 	
+ORF_1184	J	+	1153068	1151371	prolyl-tRNA synthetase 	
+ORF_1185	M	+	1154355	1153108	metalloprotease 	
+ORF_1186	I	+	1155162	1154365	phosphatidate cytidylyltransferase 	
+ORF_1187	I	+	1155899	1155168	UDP pyrophosphate synthase 	
+ORF_1188	J	+	1156459	1155902	ribosome recycling factor 	
+ORF_1189	F	+	1157184	1156459	uridylate kinase 	
+ORF_1190	J	+	1158362	1157334	elongation factor Ts 	
+ORF_1191	J	+	1159186	1158425	30S ribosomal protein S2 	
+ORF_1192	R	+	1160360	1159350	tRNA (adenine37-N(6))-methyltransferase TrmN6 (EC 2.1.1.223)	
+ORF_1194	E	+	1162113	1161127	aspartate semialdehyde dehydrogenase 	
+ORF_1195	E	+	1163454	1162114	aspartate kinase 	
+ORF_1196	E	+	1164595	1163447	homoserine dehydrogenase 	
+ORF_1198	V	+	1167009	1165219	ABC transporter ATP-binding protein/permease 	
+ORF_1199	V	+	1168762	1167002	ABC transporter ATP-binding protein 	
+ORF_1200	S	+	1169096	1168872	conserved hypothetical protein	
+ORF_1201	S	+	1169445	1169209	conserved hypothetical protein	
+ORF_1204	T	+	1172256	1171369	glutamine-binding protein 	
+ORF_1205	-	+	1172985	1172452	conserved hypothetical protein	
+ORF_1206	R	+	1175276	1173042	Lhr-like helicase 	
+ORF_1207	-	+	1176621	1175299	ATP /GTP binding protein	
+ORF_1208	-	+	1178519	1176621	conserved hypothetical protein	
+ORF_1209	F	+	1180502	1178652	5'-nucleotidase 	
+ORF_1210	J	+	1181115	1180768	50S ribosomal protein L19 	
+ORF_1211	K	+	1182964	1181237	SNF2-related domain:Helicase, C-terminal:SWIM Zn-finger 	
+ORF_1212	-	+	1183511	1183053	conserved hypothetical protein	
+ORF_1213	-	+	1183993	1183517	conserved hypothetical protein	
+ORF_1214	J	+	1184745	1184008	tRNA (guanine-N(1)-)-methyltransferase 	
+ORF_1215	J	+	1185248	1184745	16S rRNA-processing protein RimM 	
+ORF_1216	J	+	1185582	1185310	30S ribosomal protein S16 	
+ORF_1217	U	+	1187107	1185677	Signal recognition particle protein Ffh 	
+ORF_1218	S	+	1187450	1187109	transcriptional regulator 	
+ORF_1219	E	+	1187853	1187503	hydrolase 	
+ORF_1220	E	+	1188555	1188082	peptidase C69 	
+ORF_1221	U	+	1190305	1188968	Signal recognition particle-docking protein FtsY 	
+ORF_1222	D	+	1193868	1190308	chromosome segregation protein SMC 	
+ORF_1223	K	+	1194563	1193868	Ribonuclease III 	
+ORF_1224	E	+	1196430	1194688	ABC-type oligopeptide transport system, periplasmic component 	
+ORF_1225	E	+	1198375	1196603	Oligopeptide binding protein OppA1 	
+ORF_1226	E	+	1199445	1198534	peptide ABC transporter permease 	
+ORF_1227	E	+	1200415	1199456	Transmembrane protein OppB 	
+ORF_1228	R	+	1201375	1200419	oligopeptide ABC transporter ATP-binding protein 	
+ORF_1229	E	+	1202386	1201385	oligopeptide ABC transporter ATP-binding protein 	
+ORF_1230	Q	+	1202918	1202676	acyl carrier protein 	
+ORF_1231	I	+	1203972	1202980	Fatty acid-phospholipid synthesis protein 	
+ORF_1232	K	+	1206042	1204003	ATP-dependent DNA helicase RecG 	
+ORF_1233	R	+	1207706	1206042	dihydroxyacetone kinase-like protein 	
+ORF_1234	S	+	1208088	1207726	conserved hypothetical protein	
+ORF_1235	V	+	1210121	1208550	ABC transporter 	
+ORF_1236	-	+	1210399	1210286	TolA protein	
+ORF_1237	-	+	1211224	1210574	TolA protein	
+ORF_1238	-	+	1211691	1211230	TolA protein	
+ORF_1239	-	+	1212462	1212298	conserved hypothetical protein	
+ORF_1240	H	+	1213271	1212588	Putative pyrophosphokinase 	
+ORF_1241	R	+	1214194	1213301	GTPase 	
+ORF_1242	K	+	1216201	1214195	Serine-threonine protein kinase 	
+ORF_1243	T	+	1216946	1216191	Serine/threonine protein phosphatase 	
+ORF_1244	J	+	1218268	1216952	RNA methylase 	
+ORF_1245	J	+	1219205	1218258	methionyl-tRNA formyltransferase 	
+ORF_1246	L	+	1221604	1219223	PriA (primosomal protein N') 	
+ORF_1247	K	+	1221888	1221667	DNA-directed RNA polymerase subunit omega 	
+ORF_1248	F	+	1222504	1221890	guanylate kinase 	
+ORF_1250	-	+	1223269	1223045	Oligopeptide binding protein 	
+ORF_1251	E	+	1223453	1223259	Oligopeptide ABC transporter, periplasmic oligopeptide-binding protein OppA (TC 3.A.1.5.1)	
+ORF_1252	E	+	1223914	1223606	Oligopeptide ABC transporter, substrate binding protein 	
+ORF_1253	L	+	1225815	1224127	RecN, DNA repair ATPase 	
+ORF_1254	J	+	1226652	1225837	RNA methylase 	
+ORF_1255	H	+	1227515	1226652	geranylgeranyl pyrophosphate synthase 	
+ORF_1256	L	+	1227759	1227520	exodeoxyribonuclease VII small subunit 	
+ORF_1257	L	+	1229122	1227752	exodeoxyribonuclease VII 	
+ORF_1258	H	+	1229960	1229109	bifunctional 5,10-methylene-tetrahydrofolate dehydrogenase/ 5,10-methylene-tetrahydrofolate cyclohydrolase 	
+ORF_1259	K	+	1230417	1230019	transcription antitermination protein NusB 	
+ORF_1260	S	+	1230851	1230417	Alkaline shock protein	
+ORF_1261	J	+	1231437	1230871	elongation factor P 	
+ORF_1262	E	+	1232613	1231507	aminopeptidase P 	
+ORF_1263	J	+	1233058	1232759	50S ribosomal protein L27 	
+ORF_1264	J	+	1233385	1233074	50S ribosomal protein L21 	
+ORF_1266	E	+	1234551	1234024	cystathionine gamma-synthase 	
+ORF_1267	E	+	1234731	1234576	Cystathionine gamma-lyase (EC 4.4.1.1)	
+ORF_1268	E	+	1235272	1234916	branched-chain amino acid ABC transporter ATP-binding protein 	
+ORF_1269	F	+	1236589	1235324	phosphoribosylamine--glycine ligase 	
+ORF_1270	F	+	1238146	1236605	bifunctional phosphoribosylaminoimidazolecarboxamide formyltransferase/IMP cyclohydrolase 	
+ORF_1271	F	+	1238728	1238147	phosphoribosylglycinamide formyltransferase 	
+ORF_1272	F	+	1239771	1238728	Phosphoribosylformylglycinamide cyclo-ligase 	
+ORF_1273	F	+	1241252	1239774	amidophosphoribosyltransferase 	
+ORF_1274	F	+	1243450	1241228	Phosphoribosylformylglycinamidine synthase II 	
+ORF_1275	F	+	1244124	1243450	Phosphoribosylformylglycinamidine synthase I 	
+ORF_1276	F	+	1244372	1244124	Putative phosphoribosylformylglycinamidine synthase 	
+ORF_1277	F	+	1245099	1244377	phosphoribosylaminoimidazolesuccinocarboxamide synthase 	
+ORF_1278	F	+	1246718	1245423	Adenylosuccinate lyase 	
+ORF_1279	F	+	1247895	1246762	phosphoribosylaminoimidazole carboxylase ATPase subunit 	
+ORF_1280	F	+	1248367	1247876	phosphoribosylaminoimidazole carboxylase catalytic subunit 	
+ORF_1281	S	+	1248780	1248526	conserved hypothetical protein	
+ORF_1282	-	+	1249854	1248781	permease of the major facilitator superfamily 	
+ORF_1283	-	+	1251495	1250329	conserved hypothetical protein	
+ORF_1284	-	+	1253558	1251747	conserved hypothetical protein	
+ORF_1285	L	+	1255881	1253743	DNA topoisomerase 	
+ORF_1293	O	+	1265632	1264673	Neutral endopeptidase 	
+ORF_1294	F	+	1267055	1266063	adenosine deaminase 	
+ORF_1295	-	+	1267613	1267272	conserved hypothetical protein	
+ORF_1297	-	+	1268450	1268079	conserved hypothetical protein	
+ORF_1298	G	+	1269771	1268551	Putative transporter-membrane protein 	
+ORF_1299	-	+	1269954	1269826	conserved hypothetical protein	
+ORF_1300	E	+	1271358	1270021	glutamine synthetase 	
+ORF_1301	P	+	1272470	1271496	aluminum resistance protein 	
+ORF_1302	J	+	1273675	1272749	tRNA delta(2)-isopentenylpyrophosphate transferase 	
+ORF_1303	P	+	1274157	1273756	Rhodanese-like domain protein	
+ORF_1304	S	+	1274450	1274220	conserved hypothetical protein	
+ORF_1305	R	+	1275118	1274447	membrane-associated serine protease 	
+ORF_1306	H	+	1275683	1275111	5-formyltetrahydrofolate cyclo-ligase 	
+ORF_1307	J	+	1275887	1275738	50S ribosomal protein L33 	
+ORF_1308	M	+	1278022	1275974	penicillin-binding protein 	
+ORF_1310	K	+	1281299	1280811	transcription elongation factor GreA 	
+ORF_1311	J	+	1283781	1281370	phenylalanyl-tRNA synthetase subunit beta 	
+ORF_1312	J	+	1284830	1283781	phenylalanyl-tRNA synthetase subunit alpha 	
+ORF_1313	K	+	1285462	1285112	MarR family transcriptional regulator 	
+ORF_1314	J	+	1286320	1285556	rRNA methylase 	
+ORF_1317	T	+	1289340	1287748	two-component system sensor histidine kinase 	
+ORF_1318	K	+	1290046	1289333	two-component system response regulator 	
+ORF_1319	R	+	1290803	1290225	conserved hypothetical protein	
+ORF_1320	R	+	1291957	1290803	conserved hypothetical protein	
+ORF_1321	S	+	1292307	1291960	Ribosomal silencing factor RsfA (former Iojap)	
+ORF_1322	H	+	1292942	1292349	HD superfamily hydrolase 	
+ORF_1323	H	+	1293573	1292935	nicotinic acid mononucleotide adenylyltransferase 	
+ORF_1324	R	+	1294693	1293584	GTP-binding protein 	
+ORF_1325	J	+	1295107	1294802	ribosomal protein L20 	
+ORF_1326	J	+	1295403	1295203	50S ribosomal protein L35 	
+ORF_1327	J	+	1295945	1295424	translation initiation factor IF-3 	
+ORF_1328	L	+	1298103	1296622	transposase-like protein 	
+ORF_1329	L	+	1298803	1298144	transposase 	
+ORF_1331	J	+	1303675	1301744	threonyl-tRNA synthetase 	
+ORF_1332	L	+	1304900	1303977	primosomal protein DnaI 	
+ORF_1333	L	+	1306245	1304911	chromosome replication initiation/membrane attachment protein DnaB 	
+ORF_1334	K	+	1306716	1306249	transcriptional regulator NrdR 	
+ORF_1335	H	+	1307314	1306730	dephospho-CoA kinase 	
+ORF_1336	L	+	1308144	1307323	formamidopyrimidine-DNA glycosylase 	
+ORF_1337	L	+	1310815	1308155	DNA polymerase I 	
+ORF_1338	-	+	1311363	1310887	Permease of the major facilitator superfamily	
+ORF_1339	G	+	1311998	1311336	Transport protein 	
+ORF_1340	-	+	1312129	1311983	transporter 	
+ORF_1341	-	+	1312524	1312363	transcriptional regulator 	
+ORF_1342	-	+	1312674	1312549	hypothetical protein	
+ORF_1343	-	+	1312983	1312846	hypothetical protein	
+ORF_1344	M	+	1314396	1313077	UDP-N-acetylmuramate--L-alanine ligase 	
+ORF_1345	R	+	1315162	1314515	Phenylalanyl-tRNA synthetase 	
+ORF_1346	C	+	1315505	1315185	thioredoxin 	
+ORF_1347	R	+	1316240	1315584	tRNA (guanine-N(7)-)-methyltransferase 	
+ORF_1348	U	+	1317534	1316317	Putative ABC transporter permease 	
+ORF_1349	V	+	1318288	1317527	ABC transporter ATP-binding protein 	
+ORF_1352	F	+	1320184	1319255	dihydroorotate dehydrogenase 	
+ORF_1357	E	+	1323454	1322912	3-phosphoshikimate 1-carboxyvinyltransferase 	
+ORF_1358	E	+	1323893	1323525	chorismate synthase 	
+ORF_1359	R	+	1325234	1324284	CMP-binding factor 	
+ORF_1360	S	+	1327653	1325227	DNA repair ATPase 	
+ORF_1361	L	+	1328795	1327650	phosphoesterase 	
+ORF_1362	S	+	1329211	1328858	conserved hypothetical protein	
+ORF_1363	M	+	1331341	1329254	membrane carboxypeptidase 	
+ORF_1365	G	+	1333336	1332425	fructose-bisphosphate aldolase 	
+ORF_1366	S	+	1334166	1333462	D-alanyl-D-alanine carboxypeptidase (EC 3.4.16.4)	
+ORF_1367	-	+	1334467	1334330	conserved hypothetical protein	
+ORF_1368	-	+	1334908	1334537	conserved hypothetical protein	
+ORF_1369	-	+	1335027	1334905	conserved hypothetical protein	
+ORF_1370	-	+	1335292	1335173	conserved hypothetical protein	
+ORF_1371	-	+	1335691	1335299	conserved hypothetical protein	
+ORF_1372	L	+	1336634	1336224	transposase 	
+ORF_1373	-	+	1337073	1336639	Transposase	
+ORF_1374	-	+	1337240	1337121	hypothetical protein	
+ORF_1375	-	+	1337521	1337336	transposase 	
+ORF_1376	-	+	1337991	1337767	conserved hypothetical protein	
+ORF_1377	S	+	1339639	1338092	D-alanyl-D-alanine carboxypeptidase (EC 3.4.16.4)	
+ORF_1378	G	+	1340506	1339655	NAD(P)HX dehydratase	
+ORF_1379	M	+	1341794	1340508	D-alanyl-D-alanine carboxypeptidase 	
+ORF_1380	H	+	1342699	1342181	Pyruvate oxidase 	
+ORF_1381	H	+	1342857	1342696	pyruvate oxidase 	
+ORF_1382	H	+	1343754	1342966	thiamine pyrophosphate-requiring enzyme 	
+ORF_1383	-	+	1345139	1343976	conserved hypothetical protein	
+ORF_1384	G	+	1345621	1345301	pyruvate water dikinase 	
+ORF_1385	G	+	1346028	1345624	pyruvate water dikinase 	
+ORF_1386	G	+	1346262	1346062	phosphoenolpyruvate synthase 	
+ORF_1387	-	+	1346524	1346300	Pyruvate,water dikinase 	
+ORF_1388	G	+	1346911	1346654	pyruvate water dikinase 	
+ORF_1389	G	+	1347415	1346924	phosphoenolpyruvate synthase 	
+ORF_1390	R	+	1349617	1347998	polysaccharide transporter 	
+ORF_1391	J	+	1352126	1349712	leucyl-tRNA synthetase 	
+ORF_1392	L	+	1353515	1352490	transposase 	
+ORF_1394	G	+	1355825	1354377	major facilitator superfamily permease 	
+ORF_1395	H	+	1357084	1355888	S-adenosylmethionine synthetase 	
+ORF_1398	S	+	1365751	1365146	conserved hypothetical protein	
+ORF_1399	G	+	1366518	1365748	HAD family sugar phosphatase 	
+ORF_1400	S	+	1367075	1366515	conserved hypothetical protein	
+ORF_1401	F	+	1368453	1367041	Putative UDP-sugar hydrolase 	
+ORF_1402	-	+	1368796	1368464	conserved hypothetical protein	
+ORF_1403	K	+	1369904	1368903	catabolite control protein A 	
+ORF_1405	-	+	1371592	1371224	conserved hypothetical protein	
+ORF_1406	R	+	1372034	1371615	Pyridoxamine 5'-phosphate oxidase (EC 1.4.3.5)	
+ORF_1408	F	+	1373676	1373056	nucleoside-triphosphatase 	
+ORF_1410	O	+	1374703	1374392	thioredoxin 	
+ORF_1411	L	+	1377160	1374797	Mismatch repair protein 	
+ORF_1412	S	+	1377547	1377224	conserved hypothetical protein	
+ORF_1413	L	+	1377978	1377550	holliday junction resolvase 	
+ORF_1414	S	+	1378214	1377978	conserved hypothetical protein	
+ORF_1415	J	+	1380934	1378301	alanyl-tRNA synthetase 	
+ORF_1416	K	+	1382534	1381173	DEAD/DEAH box helicase 	
+ORF_1417	R	+	1383486	1382527	DHH family phosphoesterase 	
+ORF_1418	L	+	1384664	1383549	nucleotidyltransferase/DNA polymerase for DNA repair 	
+ORF_1419	G	+	1386112	1384664	Glucose-6-p 1-dehydrogenase 	
+ORF_1420	U	+	1386600	1386205	preprotein translocase, YajC subunit 	
+ORF_1421	L	+	1387699	1386689	Holliday junction DNA helicase RuvB 	
+ORF_1422	L	+	1388306	1387713	Holliday junction DNA helicase RuvA 	
+ORF_1423	L	+	1390277	1388316	DNA mismatch repair protein 	
+ORF_1424	L	+	1392847	1390277	DNA mismatch repair protein 	
+ORF_1425	O	+	1394599	1392986	60 kDa chaperonin 	
+ORF_1426	O	+	1394886	1394626	molecular chaperone GroES 	
+ORF_1427	R	+	1395753	1395070	Redox-sensitive transcriptional regulator (AT-rich DNA-binding protein)	
+ORF_1428	-	+	1396026	1395889	hypothetical protein	
+ORF_1430	O	+	1399069	1398029	Endopeptidase 	
+ORF_1431	R	+	1399602	1399072	acetyltransferase 	
+ORF_1432	O	+	1400329	1399607	TsaB protein	
+ORF_1433	-	+	1400877	1400347	Substrate-specific component FolT of folate ECF transporter	
+ORF_1434	-	+	1401492	1400962	Substrate-specific component FolT of folate ECF transporter	
+ORF_1435	I	+	1402284	1401535	Acyl-ACP thioesterase 	
+ORF_1436	R	+	1403144	1402281	methyltransferase 	
+ORF_1437	S	+	1403476	1403144	DNA replication intiation control protein YabA 	
+ORF_1438	L	+	1404363	1403491	DNA polymerase III subunit delta 	
+ORF_1439	S	+	1404689	1404363	nitrogen regulatory protein P-II (GLNB) family protein	
+ORF_1440	F	+	1405339	1404701	thymidylate kinase 	
+ORF_1441	-	+	1405705	1405469	conserved hypothetical protein	
+ORF_1442	L	+	1406306	1405707	recombination protein RecR 	
+ORF_1443	S	+	1406637	1406308	conserved hypothetical protein	
+ORF_1444	L	+	1408532	1406709	DNA polymerase III, subunit gamma/tau 	
+ORF_1445	J	+	1409201	1408692	adenosine deaminase 	
+ORF_1446	J	+	1409803	1409201	methyltransferase 	
+ORF_1447	F	+	1410335	1409805	pyrimidine operon regulatory protein / Uracil phosphoribosyltransferase 	
+ORF_1448	-	+	1413294	1410427	conserved hypothetical protein	
+ORF_1449	-	+	1413629	1413351	conserved hypothetical protein	
+ORF_1452	V	+	1415838	1414720	Beta-lactamase class C related penicillin binding protein 	
+ORF_1453	V	+	1417065	1415938	penicillin-binding protein 	
+ORF_1454	L	+	1417494	1417222	histone-like DNA-binding protein 	
+ORF_1455	-	+	1417769	1417650	ribose 5-phosphate isomerase 	
+ORF_1456	G	+	1418027	1417851	ribose 5-phosphate isomerase 	
+ORF_1459	E	+	1420665	1419709	Oligopeptide ABC transporter, periplasmic oligopeptide-binding protein OppA (TC 3.A.1.5.1)	
+ORF_1460	E	+	1421328	1420828	peptide-binding protein 	
+ORF_1462	J	+	1422353	1421988	50S ribosomal protein L7/L12 	
+ORF_1463	J	+	1422915	1422406	50S ribosomal protein L10 	
+ORF_1468	M	+	1428062	1427058	glycosyltransferase 	
+ORF_1469	J	+	1428919	1428224	50S ribosomal protein L1 	
+ORF_1470	J	+	1429428	1429003	50S ribosomal protein L11 	
+ORF_1471	K	+	1430138	1429554	transcription antitermination protein NusG 	
+ORF_1472	U	+	1430370	1430200	preprotein translocase subunit SecE 	
+ORF_1473	J	+	1430526	1430377	50S ribosomal protein L33 	
+ORF_1475	-	+	1431861	1431073	alpha/beta hydrolase 	
+ORF_1476	-	+	1432206	1431991	conserved hypothetical protein	
+ORF_1477	K	+	1432843	1432274	RNA polymerase sigma factor 	
+ORF_1478	J	+	1433704	1432955	tRNA/rRNA methyltransferase 	
+ORF_1479	S	+	1434134	1433691	conserved hypothetical protein	
+ORF_1480	J	+	1435551	1434127	cysteinyl-tRNA synthetase 	
+ORF_1483	K	+	1437669	1436794	LysR family transcriptional regulator 	
+ORF_1485	J	+	1440280	1438895	glutamyl-tRNA synthetase 	
+ORF_1486	-	+	1441379	1440543	conserved hypothetical protein	
+ORF_1487	V	+	1442077	1441379	ABC transporter ATPase 	
+ORF_1488	K	+	1442447	1442079	transcriptional regulator 	
+ORF_1491	I	+	1446348	1445128	Nikkomycin biosynthesis domain protein, putative 	
+ORF_1492	-	+	1447526	1446345	Nikkomycin biosynthesis protein	
+ORF_1493	M	+	1448380	1447523	glucose-1-phosphate thymidylyltransferase 	
+ORF_1494	-	+	1449436	1448396	conserved hypothetical protein	
+ORF_1495	G	+	1450193	1449468	ribokinase family sugar kinase 	
+ORF_1496	-	+	1451510	1450308	Drug:H+ antiporter-3 (DHA3) family protein 	
+ORF_1497	E	+	1452577	1451795	X-Pro dipeptidase PepZ 	
+ORF_1498	E	+	1452917	1452549	X-Pro dipeptidase PepZ 	
+ORF_1503	S	+	1455512	1455009	Substrate-specific component PdxU2 of pyridoxin-related ECF transporter	
+ORF_1504	C	+	1457075	1455681	acetaldehyde dehydrogenase 	
+ORF_1505	P	+	1458314	1457487	ABC transporter permease 	
+ORF_1506	R	+	1460025	1458307	heme ABC transporter ATP-binding protein 	
+ORF_1507	S	+	1460597	1460037	Substrate-specific component MtsA of methionine-regulated ECF transporter	
+ORF_1508	S	+	1461472	1460621	conserved hypothetical protein	
+ORF_1509	E	+	1463001	1461676	amino acid permease 	
+ORF_1510	-	+	1464869	1463172	conserved hypothetical protein	
+ORF_1511	V	+	1465827	1464922	ABC transporter 	
+ORF_1512	K	+	1466188	1465814	GntR family transcriptional regulator 	
+ORF_1513	-	+	1472081	1471911	conserved hypothetical protein	
+ORF_1514	T	+	1473119	1472319	Sensory box sensor/GGDEF/EAL domain protein 	
+ORF_1515	T	+	1473533	1473156	conserved hypothetical protein	
+ORF_1516	M	+	1474628	1473681	glycosyltransferase 	
+ORF_1517	O	+	1476114	1474738	DNA repair protein 	
+ORF_1518	F	+	1476668	1476114	dUTPase 	
+ORF_1521	-	+	1478718	1478563	conserved hypothetical protein	
+ORF_1522	R	+	1479785	1478850	2',3'-cyclic nucleotide 3'-phosphodiesterase (EC 3.1.4.37)	
+ORF_1523	I	+	1480359	1479898	(3R)-hydroxymyristoyl-ACP dehydratase 	
+ORF_1524	G	+	1481208	1480531	2,3-bisphosphoglycerate-dependent phosphoglycerate mutase 	
+ORF_1525	-	+	1481406	1481221	conserved hypothetical protein	
+ORF_1526	-	+	1481593	1481408	conserved hypothetical protein	
+ORF_1527	G	+	1482294	1481614	phosphoglycerate mutase family protein 	
+ORF_1528	R	+	1482881	1482354	membrane protein, putative	
+ORF_1538	K	+	1490550	1490329	lactose transport regulator	
+ORF_1539	E	+	1492018	1490651	aspartate ammonia-lyase 	
+ORF_1540	-	+	1492472	1492317	putative surface exclusion protein	
+ORF_1541	-	+	1493217	1492447	putative surface exclusion protein	
+ORF_1542	-	+	1494200	1493352	aggregation promoting factor-like surface protein 	
+ORF_1543	E	+	1495856	1494993	homoserine kinase 	
+ORF_1546	S	+	1499275	1498679	membrane protein 	
+ORF_1547	-	+	1499601	1499419	conserved hypothetical protein	
+ORF_1548	K	+	1500467	1499721	Sucrose operon transcriptional repressor 	
+ORF_1549	G	+	1501287	1500418	Beta-fructofuranosidase 	
+ORF_1550	G	+	1501573	1501280	Sucrose hydrolase 	
+ORF_1553	G	+	1505095	1503374	phosphoglucomutase 	
+ORF_1554	G	+	1505940	1505113	pullulanase 	
+ORF_1555	G	+	1506380	1505955	Pullulanase 	
+ORF_1557	E	+	1508639	1506534	arginine/lysine/ornithine decarboxylase 	
+ORF_1559	-	+	1510691	1510578	conserved hypothetical protein	
+ORF_1560	G	+	1512639	1511425	Permease of the major facilitator superfamily 	
+ORF_1562	P	+	1514125	1513049	MFS transporter 	
+ORF_1564	-	+	1516379	1515957	Alpha-amylase 	
+ORF_1565	G	+	1516948	1516427	Alpha-amylase 	
+ORF_1566	G	+	1517190	1516900	alpha-amylase 	
+ORF_1570	-	+	1519610	1519305	conserved hypothetical protein	
+ORF_1573	M	+	1525664	1524822	dipeptidyl-peptidase 	
+ORF_1575	-	+	1527550	1527278	conserved hypothetical protein	
+ORF_1576	S	+	1528166	1527798	Putative regulator of the mannose operon, ManO	
+ORF_1577	G	+	1529090	1528176	Mannose-specific PTS system component IID 	
+ORF_1578	G	+	1529931	1529119	Mannose-specific PTS system component IIC 	
+ORF_1579	G	+	1530954	1529953	PTS system mannose-specific transporter subunit IIAB 	
+ORF_1583	L	+	1533733	1532510	transposase 	
+ORF_1585	L	+	1535658	1535248	transposase, IS605 OrfB family protein 	
+ORF_1587	-	+	1543435	1543133	conserved hypothetical protein	
+ORF_1590	O	+	1546025	1544598	Fe-S cluster assembly ABC-type transport system, permease 	
+ORF_1591	C	+	1546466	1546026	Fe-S cluster formation NifU-like protein 	
+ORF_1592	E	+	1547667	1546453	cysteine sulfinate desulfinase/cysteine desulfurase 	
+ORF_1593	O	+	1548811	1547648	Fe-S cluster assembly ABC-type transport system, permease 	
+ORF_1594	O	+	1549600	1548821	Fe-S cluster assembly ABC-type transport system, ATPase 	
+ORF_1596	G	+	1550970	1550482	glucose-specific PTS system transporter subunit IIA 	
+ORF_1597	-	+	1551476	1550976	conserved hypothetical protein	
+ORF_1598	G	+	1551799	1551476	6-phospho-alpha-glucosidase 	
+ORF_1599	-	+	1552230	1552063	conserved hypothetical protein	
+ORF_1600	V	+	1552913	1552233	ABC transporter ATP-binding protein 	
+ORF_1601	-	+	1554148	1552913	ABC-type antimicrobial peptide transport system, permease component	
+ORF_1602	O	+	1555631	1555170	SsrA-binding protein 	
+ORF_1603	K	+	1558023	1555654	exoribonuclease R 	
+ORF_1604	U	+	1558323	1558090	preprotein translocase subunit SecG 	
+ORF_1605	M	+	1560450	1558378	phosphoglycerol transferase 	
+ORF_1606	S	+	1561482	1560469	membrane protein 	
+ORF_1607	M	+	1562524	1561475	glycosyltransferase 	
+ORF_1608	M	+	1563686	1562517	glycosyltransferase 	
+ORF_1609	E	+	1567048	1566548	amino acid permease 	
+ORF_1610	E	+	1567648	1567061	Arginine/ornithine antiporter 	
+ORF_1611	E	+	1567975	1567673	Arginine/ornithine antiporter 	
+ORF_1613	R	+	1569338	1568514	conserved hypothetical protein	
+ORF_1614	R	+	1569847	1569704	amidohydrolase 	
+ORF_1616	-	+	1577252	1577103	conserved hypothetical protein	
+ORF_1617	-	+	1578224	1577358	anti-sigma factor 	
+ORF_1618	K	+	1578801	1578238	RNA polymerase ECF-subfamily sigma factor 	
+ORF_1619	J	+	1580266	1578959	seryl-tRNA synthetase 	
+ORF_1620	J	+	1581003	1580509	acetyltransferase, including n-acetylase of ribosomal protein 	
+ORF_1621	S	+	1581596	1581003	Immunoreactive protein	
+ORF_1624	F	+	1584007	1583510	nucleoside deoxyribosyltransferase 	
+ORF_1625	F	+	1584687	1584016	glutamine amidotransferase 	
+ORF_1626	-	+	1584831	1584700	hypothetical protein	
+ORF_1627	L	+	1585198	1584851	transposase 	
+ORF_1628	L	+	1585457	1585149	transposase 	
+ORF_1629	L	+	1585887	1585423	transposase 	
+ORF_1630	U	+	1587281	1586199	conserved hypothetical protein	
+ORF_1631	R	+	1590594	1587394	permease 	
+ORF_1632	K	+	1591210	1590638	Putative transcriptional regulator 	
+ORF_1634	-	+	1592580	1591666	beta-lactamase 	
+ORF_1635	P	+	1593529	1592612	Magnesium and cobalt transport protein CorA	
+ORF_1637	R	+	1595011	1594508	N-acetyltransferase 	
+ORF_1638	-	+	1595654	1595067	esterase 	
+ORF_1639	-	+	1595843	1595730	conserved hypothetical protein	
+ORF_1640	E	+	1596093	1595827	peptidase U34 	
+ORF_1641	-	+	1597018	1596173	Endoribonuclease with ribo- or deoxyribonucleic acid and producing 5'-phosphomonoesters 	
+ORF_1644	-	+	1598870	1598643	transcriptional regulator/sugar kinase 	
+ORF_1645	K	+	1599204	1598917	transcriptional regulator 	
+ORF_1646	-	+	1599450	1599265	conserved hypothetical protein	
+ORF_1647	V	+	1601308	1599686	ABC transporter 	
+ORF_1653	J	+	1606225	1605668	elongation factor P 	
+ORF_1654	H	+	1607217	1606279	pantothenate kinase 	
+ORF_1658	T	+	1610084	1609254	amino acid ABC superfamily ATP binding cassette transporter, binding protein 	
+ORF_1659	L	+	1611383	1610355	transposase 	
+ORF_1660	-	+	1611653	1611396	transposase 	
+ORF_1661	E	+	1612509	1611853	amino acid ABC transporter ATPase 	
+ORF_1662	E	+	1613162	1612521	amino acid ABC transporter permease 	
+ORF_1664	R	+	1617454	1615175	helicase 	
+ORF_1665	-	+	1617672	1617448	conserved hypothetical protein	
+ORF_1669	-	+	1620160	1619921	conserved hypothetical protein	
+ORF_1670	C	+	1621785	1620364	glycerophosphoryl diester phosphodiesterase 	
+ORF_1671	-	+	1622095	1621928	conserved hypothetical protein	
+ORF_1672	-	+	1622661	1622095	ATP-dependent endonuclease of the OLD family 	
+ORF_1673	-	+	1622917	1622678	ATP/GTP-binding protein	
+ORF_1674	L	+	1623454	1622993	conserved hypothetical protein	
+ORF_1675	V	+	1624172	1623465	glycopeptide antibiotics resistance protein 	
+ORF_1679	M	+	1626521	1626057	EpsIIN, glycerol-3-phosphate cytidylyltransferase 	
+ORF_1680	M	+	1627450	1626539	transferase 	
+ORF_1681	R	+	1628904	1627471	PST family polysaccharide transporter 	
+ORF_1682	-	+	1629781	1629047	Putative glycosyl transferase 	
+ORF_1683	-	+	1630676	1629873	capsular polysaccharide biosynthesis protein	
+ORF_1684	-	+	1631881	1631123	EpsII-I, glycosyltransferase 	
+ORF_1685	M	+	1633020	1631902	multidrug MFS transporter 	
+ORF_1686	R	+	1633909	1633013	glycosyltransferase 	
+ORF_1687	R	+	1634593	1633946	polysaccharide biosynthesis protein 	
+ORF_1688	R	+	1635372	1634626	polysaccharide biosynthesis protein 	
+ORF_1689	M	+	1636490	1635375	EpsIIE, UDP-galactopyranose mutase 	
+ORF_1690	-	+	1637287	1636511	Glycosyltransferase (EC 2.4.1.-)	
+ORF_1691	M	+	1637899	1637303	multidrug MFS transporter 	
+ORF_1692	-	+	1638454	1638101	conserved hypothetical protein	
+ORF_1693	-	+	1639012	1638518	epsiib, glycosyltransferase 	
+ORF_1694	K	+	1640242	1639166	epsiia, transcriptional regulator of eps operon (lytr family) 	
+ORF_1697	-	+	1641850	1641665	hypothetical protein	
+ORF_1698	-	+	1642075	1641884	conserved hypothetical protein	
+ORF_1699	-	+	1642515	1642255	conserved hypothetical protein	
+ORF_1700	K	+	1642978	1642619	XRE family transcriptional regulator 	
+ORF_1701	C	+	1644129	1643116	glycerol-3-phosphate dehydrogenase 	
+ORF_1704	-	+	1646998	1645724	hypothetical protein	
+ORF_1705	L	+	1647642	1647148	transposase, is30 family 	
+ORF_1711	O	+	1651316	1650891	methionine sulfoxide reductase B 	
+ORF_1712	R	+	1651614	1651393	DNA-binding protein 	
+ORF_1713	M	+	1653140	1652166	dtdp-4-keto-l-rhamnose reductase rmld 	
+ORF_1715	L	+	1654909	1654742	transposase 	
+ORF_1716	C	+	1656529	1655444	NAD/NADP octopine/nopaline dehydrogenase 	
+ORF_1717	E	+	1658058	1656577	amino acid premease 	
+ORF_1718	M	+	1659819	1658059	glycosyl transferase 	
+ORF_1719	M	+	1660745	1659837	glycosyl transferase 	
+ORF_1720	M	+	1662502	1660745	Cholinephosphate cytidylyltransferase (EC 2.7.7.15) / Choline kinase (EC 2.7.1.32)	
+ORF_1721	M	+	1663929	1662730	Putative glycosyl/glycerophosphate transferases involved in teichoic acid biosynthesis TagF/TagB/EpsJ/RodC 	
+ORF_1722	R	+	1665383	1663926	Membrane protein involved in the export of O-antigen and teichoic acid 	
+ORF_1723	-	+	1666620	1665373	Oligosaccharide repeat unit polymerase Wzy	
+ORF_1724	M	+	1669398	1668322	EpsIM, glycosyltransferase 	
+ORF_1725	S	+	1670323	1669874	multidrug MFS transporter 	
+ORF_1726	M	+	1670853	1670389	Polysaccharide biosynthesis protein CpsF	
+ORF_1727	M	+	1671570	1670911	EpsIE, glycosyltransferase 	
+ORF_1728	M	+	1672260	1671601	capsular polysaccharide biosynthesis protein 	
+ORF_1729	D	+	1673166	1672381	EpsC 	
+ORF_1730	M	+	1674060	1673176	capsular polysaccharide biosynthesis protein 	
+ORF_1731	K	+	1675091	1674060	EpsA 	
+ORF_1733	M	+	1677525	1676746	L-alanyl-gamma-D-glutamyl-L-diamino acid endopeptidase	
+ORF_1734	M	+	1677759	1677571	hydrolase 	
+ORF_1735	-	+	1678263	1677988	Cell wall-associated hydrolase 	
+ORF_1736	M	+	1679199	1678417	hydrolase 	
+ORF_1737	M	+	1679860	1679387	L-alanyl-gamma-D-glutamyl-L-diamino acid endopeptidase	
+ORF_1738	H	+	1681079	1680033	D-isomer specific 2-hydroxyacid dehydrogenase 	
+ORF_1739	M	+	1681849	1681364	NLP-P60 family secreted protein 	
+ORF_1740	F	+	1682516	1681974	guanylate kinase 	
+ORF_1743	-	+	1685243	1684617	conserved hypothetical protein	
+ORF_1744	-	+	1685761	1685246	conserved hypothetical protein	
+ORF_1745	S	+	1686839	1686348	Integral membrane protein	
+ORF_1746	S	+	1687597	1686842	membrane protein 	
+ORF_1747	R	+	1689195	1687651	ABC transporter ATPase 	
+ORF_1748	-	+	1689587	1689210	conserved hypothetical protein	
+ORF_1749	K	+	1690845	1689706	LytR family transcriptional regulator 	
+ORF_1752	C	+	1695288	1694677	oxidoreductase 	
+ORF_1753	-	+	1695496	1695374	conserved hypothetical protein	
+ORF_1754	-	+	1695914	1695471	conserved hypothetical protein	
+ORF_1755	P	+	1696848	1696051	ABC transporter permease 	
+ORF_1756	P	+	1697501	1696848	Zinc ABC transporter ATPase protein 	
+ORF_1757	R	+	1698327	1697527	HAD superfamily hydrolase 	
+ORF_1758	G	+	1700563	1698593	fusion of IIA, IIB and IIC component of mannitol/fructose-specific phosphotransferase system mannitol/fructose-specific 	
+ORF_1759	G	+	1701526	1700612	tagatose-6-phosphate kinase 	
+ORF_1760	K	+	1702275	1701526	fructose repressor 	
+ORF_1761	M	+	1703186	1702437	aspartate racemase 	
+ORF_1762	M	+	1704750	1703200	UDP-N-acetylmuramoylalanyl-D-glutamate--2,6-diaminopimelate ligase 	
+ORF_1763	T	+	1705995	1704787	histidine kinase 	
+ORF_1764	K	+	1706671	1705985	two-component system response regulator 	
+ORF_1765	V	+	1708644	1706800	ABC transporter ATPase/permease 	
+ORF_1766	V	+	1710382	1708655	multidrug ABC transporter ATPase 	
+ORF_1767	S	+	1711290	1710520	Integral membrane protein	
+ORF_1768	J	+	1712405	1711305	GTP-dependent nucleic acid-binding protein EngD 	
+ORF_1769	S	+	1712745	1712482	conserved hypothetical protein	
+ORF_1770	K	+	1713628	1712738	Spo0J-like protein 	
+ORF_1771	D	+	1714385	1713606	chromosome partitioning protein ParA 	
+ORF_1772	K	+	1715211	1714387	chromosome partitioning protein ParB 	
+ORF_1773	M	+	1715949	1715230	16S rRNA methyltransferase GidB 	
+ORF_1777	H	+	1720312	1719353	thiamine biosynthesis protein ApbE 	
+ORF_1778	T	+	1721106	1720324	Protein-tyrosine phosphatase 	
+ORF_1779	R	+	1721748	1721200	oxidoreductase 	
+ORF_1780	R	+	1722304	1721765	NADPH-dependent FMN reductase 	
+ORF_1781	-	+	1722941	1722432	transcriptional regulator 	
+ORF_1783	-	+	1725194	1724733	conserved hypothetical protein	
+ORF_1784	V	+	1725840	1725178	ABC transporter ATP-binding protein 	
+ORF_1785	-	+	1726152	1725844	membrane protein 	
+ORF_1786	-	+	1726647	1726477	membrane protein 	
+ORF_1787	-	+	1726729	1726607	membrane protein 	
+ORF_1788	-	+	1727015	1726689	(S)-2-hydroxy-acid oxidase chain D 	
+ORF_1789	C	+	1727363	1727019	2-hydroxy-acid oxidase 	
+ORF_1790	-	+	1727568	1727317	conserved hypothetical protein	
+ORF_1791	S	+	1728484	1727747	conserved hypothetical protein	
+ORF_1794	-	+	1730658	1730539	conserved hypothetical protein	
+ORF_1797	E	+	1733647	1731116	aminopeptidase 	
+ORF_1803	P	+	1739389	1737971	2-oxoglutarate/malate translocator 	
+ORF_1804	C	+	1740817	1739414	fumarate hydratase 	
+ORF_1805	-	+	1741493	1741263	conserved hypothetical protein	
+ORF_1806	-	+	1741928	1741791	conserved hypothetical protein	
+ORF_1807	-	+	1742022	1741900	conserved hypothetical protein	
+ORF_1809	-	+	1743470	1743231	conserved hypothetical protein	
+ORF_1810	R	+	1744066	1743566	conserved hypothetical protein	
+ORF_1811	T	+	1744848	1744066	protein tyrosine/serine phosphatase 	
+ORF_1812	T	+	1745718	1744960	Protein-tyrosine phosphatase 	
+ORF_1813	C	+	1746483	1745752	glycerol kinase 	
+ORF_1814	C	+	1746839	1746444	glycerol kinase 	
+ORF_1815	C	+	1747101	1746826	glycerol kinase 	
+ORF_1820	E	+	1752121	1751633	Branched-chain amino acid transport system carrier protein	
+ORF_1821	-	+	1752996	1752097	transposase 	
+ORF_1822	F	+	1757434	1754246	carbamoyl phosphate synthase large subunit 	
+ORF_1823	F	+	1758512	1757427	carbamoyl phosphate synthase small subunit 	
+ORF_1824	F	+	1759789	1758512	dihydroorotase 	
+ORF_1825	F	+	1760745	1759789	aspartate carbamoyltransferase 	
+ORF_1826	F	+	1761432	1760890	bifunctional pyrimidine regulatory protein PyrR/uracil phosphoribosyltransferase 	
+ORF_1827	F	+	1762513	1761590	dihydroorotate dehydrogenase 1B 	
+ORF_1828	-	+	1763692	1762898	transposase 	
+ORF_1830	R	+	1766387	1765476	permease 	
+ORF_1831	R	+	1767324	1766563	glutamine amidotransferase 	
+ORF_1832	R	+	1768135	1767329	HAD superfamily hydrolase 	
+ORF_1833	R	+	1769078	1768200	cell surface hydrolase (putative)	
+ORF_1834	G	+	1770387	1769071	PTS system cellobiose-specific transporter subunit IIC 	
+ORF_1835	P	+	1776479	1776210	conserved hypothetical protein	
+ORF_1837	H	+	1778273	1777809	6,7-dimethyl-8-ribityllumazine synthase 	
+ORF_1838	H	+	1778563	1778288	3,4-dihydroxy-2-butanone 4-phosphate synthase 	
+ORF_1839	H	+	1779405	1778587	3,4-dihydroxy-2-butanone 4-phosphate synthase 	
+ORF_1840	H	+	1779724	1779512	Riboflavin synthase eubacterial/eukaryotic (EC 2.5.1.9)	
+ORF_1841	H	+	1780008	1779721	Diaminohydroxyphosphoribosylaminopyrimidine deaminase (EC 3.5.4.26) / 5-amino-6-(5-phosphoribosylamino)uracil reductase (EC 1.1.1.193)	
+ORF_1842	K	+	1786899	1786273	transcriptional regulator 	
+ORF_1843	V	+	1788900	1786903	ABC transporter ATP-binding protein/permease 	
+ORF_1844	-	+	1789425	1789036	conserved hypothetical protein	
+ORF_1845	-	+	1789744	1789487	conserved hypothetical protein	
+ORF_1846	M	+	1791272	1789986	D-alanyl transfer protein 	
+ORF_1847	-	+	1791504	1791262	D-alanine--poly(phosphoribitol) ligase subunit 2 	
+ORF_1848	M	+	1792818	1791586	Membrane protein 	
+ORF_1849	Q	+	1794323	1792815	cytochrome C551 peroxidase 	
+ORF_1850	-	+	1794482	1794333	hypothetical protein	
+ORF_1851	-	+	1794980	1794660	conserved hypothetical protein	
+ORF_1852	-	+	1796225	1795017	conserved hypothetical protein	
+ORF_1853	-	+	1797307	1796975	transposase 	
+ORF_1858	-	+	1801624	1801460	hypothetical protein	
+ORF_1860	-	+	1803517	1802861	conserved hypothetical protein	
+ORF_1863	-	+	1806491	1806039	conserved hypothetical protein	
+ORF_1864	-	+	1806941	1806534	conserved hypothetical protein	
+ORF_1868	-	+	1810218	1810090	hypothetical protein	
+ORF_1871	L	+	1812547	1811792	Mobile element protein	
+ORF_1872	L	+	1813256	1812537	transposase DDE domain protein 	
+ORF_1873	-	+	1813569	1813237	Mobile element protein	
+ORF_1884	-	+	1825816	1825445	conserved hypothetical protein	
+ORF_1886	R	+	1826751	1825909	aldehyde oxidoreductase 	
+ORF_1890	-	+	1830044	1829076	conserved hypothetical protein	
+ORF_1891	-	+	1830288	1830034	conserved hypothetical protein	
+ORF_1897	P	+	1837526	1835988	chloride channel protein eric 	
+ORF_1898	S	+	1838073	1837597	conserved hypothetical protein	
+ORF_1900	G	+	1840834	1839449	6-phosphogluconate dehydrogenase 	
+ORF_1901	H	+	1842765	1840933	Pyruvate oxidase 	
+ORF_1902	D	+	1844967	1843072	Glucose inhibited division protein A 	
+ORF_1903	R	+	1846378	1844993	tRNA modification GTPase TrmE 	
+ORF_1904	U	+	1847355	1846486	Stage III sporulation protein J 	
+ORF_1905	J	+	1847720	1847355	ribonuclease P 	
