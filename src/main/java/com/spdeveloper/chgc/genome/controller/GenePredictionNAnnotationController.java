@@ -30,11 +30,11 @@ import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.BlastOutput;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 
 import reactor.core.publisher.Flux;
 
@@ -101,7 +101,7 @@ public class GenePredictionNAnnotationController {
 	    
 	    Flux<GenePrediction> genePredictionFlux = Flux.fromIterable(genePrediction);
 	    List<GeneAnnotated> geneAnnotateds = genePredictionFlux.zipWith(prMatches, (g, p)->{
-	    	return new GeneAnnotated(g, p);
+	    	return new GeneAnnotated(g, p, null);
 	    }  ).collectList().block();
 	    
 	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");

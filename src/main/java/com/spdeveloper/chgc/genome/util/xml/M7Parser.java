@@ -1,4 +1,4 @@
-package com.spdeveloper.chgc.genome.prediction.service;
+package com.spdeveloper.chgc.genome.util.xml;
 
 import java.io.File;
 import java.io.InputStream;

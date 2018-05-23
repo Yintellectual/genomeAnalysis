@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +35,13 @@ import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
 import com.spdeveloper.chgc.genome.prediction.service.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.prediction.service.GlimmerGenePrediction;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser;
 import com.spdeveloper.chgc.genome.prediction.service.ZcurveGenePrediction;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.BlastOutput;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 
 import reactor.core.publisher.Flux;
 
@@ -79,14 +80,17 @@ public class GenePredictionNAnnotationController2 {
 	    
 	    Path translatedFile = geneToProteinTranslate.translate(geneFasFile.toFile(), tempDir).toPath();
 	    
-	    File m7File = blastAllProteinAnnotation.blastAll(translatedFile.toFile(), tempDir);
+	    File blastResult = blastAllProteinAnnotation.blastAll(translatedFile.toFile(), tempDir);
 	    
-	    BlastOutput blastOutput = M7Parser.parse(m7File);
+	    BlastOutput blastOutput = M7Parser.parse(blastResult);
 	    Flux<PrMatch> prMatches = Flux.fromIterable(blastOutput.getBlastOutput_iterations().getPrMatchs());
+	    
+	    //File cogResult = 
+	    //Flux<PrMatch> prMatches = Flux.fromIterable(M7Parser.parse(cogResult).getBlastOutput_iterations().getPrMatchs());
 	    
 	    Flux<GenePrediction> genePredictionFlux = Flux.fromIterable(genePrediction);
 	    List<GeneAnnotated> geneAnnotateds = genePredictionFlux.zipWith(prMatches, (g, p)->{
-	    	return new GeneAnnotated(g, p);
+	    	return new GeneAnnotated(g, p, null);
 	    }  ).collectList().block();
 	    
 	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");
@@ -101,6 +105,10 @@ public class GenePredictionNAnnotationController2 {
 		Resource resource = new InputStreamResource(new FileInputStream(annotationFile.toFile()));
 		//Resource resource = new InputStreamResource(new FileInputStream(translatedFile.toFile()));
 		ResponseEntity<Resource> result = new ResponseEntity<>(resource, responseHeaders, HttpStatus.OK);
+		
+		
+		log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
+		FileUtils.deleteDirectory(tempDir.toFile());
 		return result;
 	}
 }

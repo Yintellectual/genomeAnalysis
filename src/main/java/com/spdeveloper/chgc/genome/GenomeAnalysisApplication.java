@@ -22,10 +22,10 @@ import org.springframework.context.annotation.Bean;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.BlastOutput;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.visualization.service.COGColorParser;
 import com.thoughtworks.xstream.XStream;
 

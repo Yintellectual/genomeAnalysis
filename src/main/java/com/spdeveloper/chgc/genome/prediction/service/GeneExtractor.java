@@ -35,6 +35,10 @@ public class GeneExtractor {
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
+		String osName = System.getProperty("os.name");
+		if(osName.toUpperCase().contains("WINDOWS")){
+			return;
+		}
 		try {
 			File fasta = Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas").toFile();
 			File predictions = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Gene.xlsx").toFile();

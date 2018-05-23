@@ -35,6 +35,10 @@ public class BlastAllProteinAnnotation {
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
+		String osName = System.getProperty("os.name");
+		if(osName.toUpperCase().contains("WINDOWS")){
+			return;
+		}
 		try {
 			File prFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");

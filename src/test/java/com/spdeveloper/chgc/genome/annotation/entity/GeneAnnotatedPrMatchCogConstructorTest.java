@@ -18,19 +18,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.Hit;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.Iteration_hits;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.PrMatch;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.Hit;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.Iteration_hits;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GeneAnnotatedPrMatchConstructorTest {
+public class GeneAnnotatedPrMatchCogConstructorTest {
 
 	private PrMatch sample_Multispecies = new PrMatch("ORF_0001", "MULTISPECIES: chromosomal replication initiator protein DnaA [Lactobacillus casei group] &gt;gi|226735820|sp|B3W6N4.1|DNAA_LACCB RecName: Full=Chromosomal replication initiator protein DnaA &gt;gi|190711127|emb|CAQ65133.1| Chromosomal replication initiator protein dnaA [Lactobacillus casei BL23] &gt;gi|327380862|gb|AEA52338.1| DNA-directed DNA replication initiator protein [Lactobacillus casei LC2W] &gt;gi|327384028|gb|AEA55502.1| DNA-directed DNA replication initiator protein [Lactobacillus casei BD-II] &gt;gi|406356678|emb|CCK20948.1| Chromosomal replication initiator protein DnaA [Lactobacillus casei W56] &gt;gi|511397248|gb|EPC35369.1| Chromosomal replication initiator protein DnaA [Lactobacillus paracasei subsp. paracasei Lpp223] &gt;gi|511451961|gb|EPC81929.1| chromosomal replication initiation protein [Lactobacillus paracasei subsp. paracasei Lpp37]");
 	private PrMatch sample_SingleMatch = new PrMatch("ORF_0001", "gi|327385426|gb|AEA56900.1| Deoxynucleoside kinase subfamily, putative [Lactobacillus casei BD-II]");
 	private GenePrediction genePrediction = new GenePrediction("ORF_0001", 131, 829, false);
-	GeneAnnotated geneAnnotated_Multispecies = new GeneAnnotated(genePrediction, sample_Multispecies);
-	GeneAnnotated geneAnnotated_SingleMatch = new GeneAnnotated(genePrediction, sample_SingleMatch);
+	GeneAnnotated geneAnnotated_Multispecies = new GeneAnnotated(genePrediction, sample_Multispecies, null);
+	GeneAnnotated geneAnnotated_SingleMatch = new GeneAnnotated(genePrediction, sample_SingleMatch, null);
 	
 	
 	@Test
@@ -51,15 +51,25 @@ public class GeneAnnotatedPrMatchConstructorTest {
 	
 	@Test
 	public void IgnoreEverythingFromGiToVerticleBar(){
-		assertEquals(geneAnnotated_SingleMatch.getProduct(), "Deoxynucleoside kinase subfamily, putative");
+		assertEquals("Deoxynucleoside kinase subfamily, putative", geneAnnotated_SingleMatch.getProduct());
 	}
 	
 	@Test
 	public void setValuesNullOtherwise() {
 		String hit_def = null;
-		GeneAnnotated sample  = new GeneAnnotated(genePrediction, new PrMatch("ORF_0001", hit_def));
+		GeneAnnotated sample  = new GeneAnnotated(genePrediction, new PrMatch("ORF_0001", hit_def), null);
 		
 		assertNull(sample.getBest_hit_organism());
 		assertNull(sample.getProduct());
+	}
+	
+	@Test 
+	public void worksForCog() {
+		
+		String cog_hit_def = "COG2252, COG2252, Permeases [General function prediction only].";
+		GeneAnnotated sample  = new GeneAnnotated(genePrediction, sample_Multispecies, new PrMatch("ORF_0001", cog_hit_def));
+		
+		assertEquals("COG2252, COG2252, Permeases", sample.getCog());
+		assertEquals("General function prediction only", sample.getCog_class());
 	}
 }

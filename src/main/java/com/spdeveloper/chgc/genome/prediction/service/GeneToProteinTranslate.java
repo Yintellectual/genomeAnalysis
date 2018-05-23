@@ -32,6 +32,10 @@ public class GeneToProteinTranslate {
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
+		String osName = System.getProperty("os.name");
+		if(osName.toUpperCase().contains("WINDOWS")){
+			return;
+		}
 		try {
 			File geneFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "gene.fas").toFile();
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");

@@ -34,6 +34,10 @@ public class GlimmerGenePrediction {
 	
 	@PostConstruct
 	public void dependencyCheck() {
+		String osName = System.getProperty("os.name");
+		if(osName.toUpperCase().contains("WINDOWS")){
+			return;
+		}
 		try {
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
 			List<GenePrediction> glimmerPrediction = getGenePredictions(Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas").toFile(), tempDir);

@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
-import com.spdeveloper.chgc.genome.prediction.service.M7Parser.PrMatch;
+import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,14 +24,14 @@ public class GeneAnnotated {
 	private String cog;
 	private String cog_class;
 
-	public GeneAnnotated(GenePrediction g, PrMatch p) {
+	public GeneAnnotated(GenePrediction g, PrMatch blast, PrMatch cog) {
 		this.name = g.getName();
 		this.start = g.getStart();
 		this.stop = g.getStop();
 		this.positive = g.isPositive();
 		String hit_def = null;
 		try {
-			hit_def = p.getIteration_hits().getHit().getHit_def();
+			hit_def = blast.getIteration_hits().getHit().getHit_def();
 		} catch (NullPointerException e) {
 
 		}
@@ -57,8 +57,25 @@ public class GeneAnnotated {
 			Pattern pattern = Pattern.compile("(.*)\\[(.*)\\]");
 			Matcher matcher = pattern.matcher(hit);
 			if(matcher.find()) {
-				this.product = prefix + matcher.group(1);
-				this.best_hit_organism = matcher.group(2);
+				this.product = prefix + matcher.group(1).trim();
+				this.best_hit_organism = matcher.group(2).trim();
+			}
+		}
+		//cog 
+		String cog_hit_def = null;
+		try {
+			cog_hit_def = cog.getIteration_hits().getHit().getHit_def();
+		} catch (NullPointerException e) {
+
+		}
+		if(cog_hit_def==null||cog_hit_def.isEmpty()) {
+			
+		}else {
+			Pattern pattern = Pattern.compile("(.*)\\[(.*)\\]");
+			Matcher matcher = pattern.matcher(cog_hit_def);
+			if(matcher.find()) {
+				this.cog = matcher.group(1).trim();
+				this.cog_class = matcher.group(2).trim();
 			}
 		}
 	}
