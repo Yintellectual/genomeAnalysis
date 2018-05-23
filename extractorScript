@@ -1,2 +1,2 @@
 #!/bin/bash
-/u/dependencies/glimmer3.02/bin/extract $1 $2 > $3
+/u/sysadm/dependencies/glimmer3.02/bin/extract $1 $2 > $3
