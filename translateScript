@@ -1,2 +1,2 @@
 #!/bin/bash
-perl /root/translate.pl $1 > $2
+perl ./translate.pl $1 > $2
