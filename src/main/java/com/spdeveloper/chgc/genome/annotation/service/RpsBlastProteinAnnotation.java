@@ -46,17 +46,17 @@ public class RpsBlastProteinAnnotation {
 			File prFas = geneToProteinTranslate.edit(rawPrFas.toPath(), tempDir);
 			File actual = rpsBlast(prFas, tempDir);
 			
-//			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.nr");
-//			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
-//			if(comparisonReport.contains("identical")) {
-//				
-//			}else {
-//				throw new MissDependencyException(comparisonReport);
-//			}
-//			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-//			FileUtils.deleteDirectory(tempDir.toFile());
+			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.cog");
+			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
+			if(comparisonReport.contains("identical")) {
+				
+			}else {
+				throw new MissDependencyException(comparisonReport);
+			}
+			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
+			FileUtils.deleteDirectory(tempDir.toFile());
 		} catch (Exception e) {
-			throw new MissDependencyException("blastAll is not working.", e);
+			throw new MissDependencyException("RpsBlast is not working.", e);
 		}
 	}
 	
