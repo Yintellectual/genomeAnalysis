@@ -4,7 +4,7 @@
   <BlastOutput_program>blastp</BlastOutput_program>
   <BlastOutput_version>blastp 2.2.26 [Sep-21-2011]</BlastOutput_version>
   <BlastOutput_reference>~Reference: Altschul, Stephen F., Thomas L. Madden, Alejandro A. Schaffer, ~Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), ~&quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search~programs&quot;,  Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
-  <BlastOutput_db>CDD/Cog</BlastOutput_db>
+  <BlastOutput_db>/u/sysadm/dependencies/CDD/Cog</BlastOutput_db>
   <BlastOutput_query-ID>lcl|1_0</BlastOutput_query-ID>
   <BlastOutput_query-def>orf_0001  829 131  len=699</BlastOutput_query-def>
   <BlastOutput_query-len>232</BlastOutput_query-len>
