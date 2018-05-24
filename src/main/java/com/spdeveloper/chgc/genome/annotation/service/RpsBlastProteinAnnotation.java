@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
+import com.spdeveloper.chgc.genome.prediction.service.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
@@ -31,6 +32,8 @@ public class RpsBlastProteinAnnotation {
 	@Value("${cmdTemplate.rpsBlast}")
 	String cmdTemplate;
 
+	@Autowired
+	GeneToProteinTranslate geneToProteinTranslate;
 	
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
@@ -38,8 +41,9 @@ public class RpsBlastProteinAnnotation {
 			return;
 		}
 		try {
-			File prFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
+			File rawPrFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
+			File prFas = geneToProteinTranslate.edit(rawPrFas.toPath(), tempDir);
 			File actual = rpsBlast(prFas, tempDir);
 			
 //			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.nr");
