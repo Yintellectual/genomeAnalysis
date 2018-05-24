@@ -1,0 +1,38 @@
+Status: Phase I: Searching for tRNAs with HMM-enabled Infernal
+Status: Phase II: Infernal verification of candidate tRNAs detected with first-pass scan
+Failed to parse command line: No such option "--fmt".
+Usage: cmscan [-options] <cmdb> <seqfile>
+
+where basic options are:
+  -h        : show brief help on version and usage
+  -g        : configure CM for glocal alignment [default: local]
+  -Z <x>    : set search space size in *Mb* to <x> for E-value calculations  (x>0)
+  --devhelp : show list of otherwise hidden developer/expert options
+
+To see more help on available options, do /usr/lib/infernal/cmscan -h
+
+Error: Infernal cmscan cannot be completed successfully for Genome. /usr/local/bin/cmscan -g --mid --toponly --notrunc --fmt 2 --tblout /tmp/tscan22485_iso_cm.tab -o /tmp/tscan22485_iso_cm.out /usr/local/lib/tRNAscan-SE/models/TRNAinf-euk-iso /tmp/tscan22485.trna (Exit Code: 256 )
+Sequence		tRNA  	Bounds	tRNA	Anti	Intron Bounds	Inf	      
+Name    	tRNA #	Begin 	End   	Type	Codon	Begin	End	Score	Note
+--------	------	----- 	------	----	-----	-----	----	------	------
+Genome  	1	38253 	38326 	Ile	GAT	0	0	79.4	
+Genome  	2	38396 	38468 	Ala	TGC	0	0	69.6	
+Genome  	3	41699 	41771 	Asn	GTT	0	0	79.0	
+Genome  	4	41775 	41848 	Pro	TGG	0	0	71.1	
+Genome  	5	41868 	41939 	Gly	GCC	0	0	72.5	
+Genome  	6	41975 	42048 	Arg	ACG	0	0	67.7	
+Genome  	7	42051 	42123 	Val	TAC	0	0	76.1	
+Genome  	8	42127 	42200 	Asp	GTC	0	0	63.4	
+Genome  	9	283168	283240	Thr	CGT	0	0	78.1	
+Genome  	10	299650	299721	Glu	TTC	0	0	66.3	
+Genome  	11	299725	299797	Val	TAC	0	0	76.1	
+Genome  	12	302544	302616	Lys	CTT	0	0	75.0	
+Genome  	13	302650	302722	Lys	CTT	0	0	75.0	
+Genome  	14	302756	302828	Lys	CTT	0	0	75.0	
+Genome  	15	302862	302934	Lys	CTT	0	0	75.0	
+Genome  	16	330619	330690	Gly	GCC	0	0	72.5	
+Genome  	17	330726	330799	Arg	ACG	0	0	67.7	
+Genome  	18	330802	330874	Val	TAC	0	0	76.1	
+Genome  	19	330878	330949	Glu	TTC	0	0	66.3	
+Genome  	20	330976	331049	Asp	GTC	0	0	63.4	
+Genome  	21	299498	299413	Leu	AAG	0	0	49.3	
