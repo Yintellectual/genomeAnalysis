@@ -61,7 +61,8 @@ public class GeneToProteinTranslate {
 	public File translateOnly(File geneFas, Path tempDir) throws IOException, InterruptedException {
 		IntegratedProgram translate = new IntegratedProgram(cmdTemplate, null);
 		Path translateTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "rawPr.fas");
-		return translate.execute(null, translateTempFile, geneFas.getAbsolutePath(), translateTempFile.toFile().getAbsolutePath());
+		translate.execute(null, translateTempFile, geneFas.getAbsolutePath(), translateTempFile.toFile().getAbsolutePath());
+		return translateTempFile.toFile();
 	}
 	
 	public File edit(Path rawPrFas, Path tempDir) throws IOException {

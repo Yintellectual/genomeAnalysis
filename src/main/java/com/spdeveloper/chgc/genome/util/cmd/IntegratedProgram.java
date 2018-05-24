@@ -39,13 +39,13 @@ public class IntegratedProgram {
 	private Path programCreatedFile;
 
 	
-	public File execute(List<String> choices, Path resultingTempFile, String... args) throws IOException, InterruptedException {
+	public void execute(List<String> choices, Path resultingTempFile, String... args) throws IOException, InterruptedException {
 
 		String cmd = String.format(cmdTemplate, args);
 		Process process = Runtime.getRuntime().exec(cmd);
 
 		StreamWaiter streamWaiter = new StreamWaiter(process.getOutputStream(),
-				Arrays.asList(new String[] { "dadada", "dididi", "banana" }));
+				choices);
 		StreamGobbler streamGobbler = new StreamGobbler(process.getInputStream(), log::info);
 		Thread threadStreamGobbler = new Thread(streamGobbler);
 		Thread threadStreamWaiter = new Thread(streamWaiter);
@@ -61,7 +61,7 @@ public class IntegratedProgram {
 		}else {
 			log.info("resulting file should be saved as "+ resultingTempFile);
 		}
-		return resultingTempFile.toFile();
+		return;
 	}
 
 	private static class StreamWaiter implements Runnable {

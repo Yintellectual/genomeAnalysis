@@ -25,13 +25,13 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
-public class BlastAllProteinAnnotation {
+public class RpsBlastProteinAnnotation {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Value("${cmdTemplate.blastAll}")
+	@Value("${cmdTemplate.rpsBlast}")
 	String cmdTemplate;
 
-
+	
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
 		if(SystemUtil.isWindows()) {
@@ -40,25 +40,27 @@ public class BlastAllProteinAnnotation {
 		try {
 			File prFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			File actual = blastAll(prFas, tempDir);
-			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.nr");
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
-			if(comparisonReport.contains("identical")) {
-				
-			}else {
-				throw new MissDependencyException(comparisonReport);
-			}
-			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-			FileUtils.deleteDirectory(tempDir.toFile());
+			File actual = rpsBlast(prFas, tempDir);
+			
+//			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.nr");
+//			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
+//			if(comparisonReport.contains("identical")) {
+//				
+//			}else {
+//				throw new MissDependencyException(comparisonReport);
+//			}
+//			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
+//			FileUtils.deleteDirectory(tempDir.toFile());
 		} catch (Exception e) {
 			throw new MissDependencyException("blastAll is not working.", e);
 		}
 	}
 	
-	public File blastAll(File prFas, Path tempDir) throws IOException, InterruptedException {
-		IntegratedProgram blastAll = new IntegratedProgram(cmdTemplate, null);
-		Path blastAllTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "pr.nr");
-		blastAll.execute(null, blastAllTempFile, prFas.getAbsolutePath(), blastAllTempFile.toFile().getAbsolutePath());
-		return blastAllTempFile.toFile();
+	public File rpsBlast(File prFas, Path tempDir) throws IOException, InterruptedException {
+		IntegratedProgram rpsBlast = new IntegratedProgram(cmdTemplate, null);
+		Path rpsBlastTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "pr.cog");
+		rpsBlast.execute(null, rpsBlastTempFile, prFas.getAbsolutePath(), rpsBlastTempFile.toFile().getAbsolutePath());
+		log.info(rpsBlastTempFile.toFile().getAbsolutePath());
+		return rpsBlastTempFile.toFile();
 	}
 }
