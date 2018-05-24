@@ -1,17 +1,5 @@
 Status: Phase I: Searching for tRNAs with HMM-enabled Infernal
 Status: Phase II: Infernal verification of candidate tRNAs detected with first-pass scan
-Failed to parse command line: No such option "--fmt".
-Usage: cmscan [-options] <cmdb> <seqfile>
-
-where basic options are:
-  -h        : show brief help on version and usage
-  -g        : configure CM for glocal alignment [default: local]
-  -Z <x>    : set search space size in *Mb* to <x> for E-value calculations  (x>0)
-  --devhelp : show list of otherwise hidden developer/expert options
-
-To see more help on available options, do /usr/lib/infernal/cmscan -h
-
-Error: Infernal cmscan cannot be completed successfully for Genome. /usr/local/bin/cmscan -g --mid --toponly --notrunc --fmt 2 --tblout /tmp/tscan22485_iso_cm.tab -o /tmp/tscan22485_iso_cm.out /usr/local/lib/tRNAscan-SE/models/TRNAinf-euk-iso /tmp/tscan22485.trna (Exit Code: 256 )
 Sequence		tRNA  	Bounds	tRNA	Anti	Intron Bounds	Inf	      
 Name    	tRNA #	Begin 	End   	Type	Codon	Begin	End	Score	Note
 --------	------	----- 	------	----	-----	-----	----	------	------
