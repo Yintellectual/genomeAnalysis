@@ -22,6 +22,7 @@ import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
+import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
 public class BlastAllProteinAnnotation {
@@ -35,8 +36,7 @@ public class BlastAllProteinAnnotation {
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
-		String osName = System.getProperty("os.name");
-		if(osName.toUpperCase().contains("WINDOWS")){
+		if(SystemUtil.isWindows()) {
 			return;
 		}
 		try {

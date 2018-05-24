@@ -21,6 +21,7 @@ import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
+import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
 public class GeneExtractor {
@@ -35,8 +36,7 @@ public class GeneExtractor {
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
-		String osName = System.getProperty("os.name");
-		if(osName.toUpperCase().contains("WINDOWS")){
+		if(SystemUtil.isWindows()) {
 			return;
 		}
 		try {
@@ -54,10 +54,12 @@ public class GeneExtractor {
 			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
 			FileUtils.deleteDirectory(tempDir.toFile());
 		} catch (Exception e) {
-			throw new MissDependencyException("Glimmer is not working.", e);
+			throw new MissDependencyException("GeneExtractor is not working.", e);
 		}
 	}
 
+
+	
 	public File extract(File fastaFile, List<GenePrediction> predictions, Path tempDir)
 			throws IOException, InterruptedException {
 		Path predictionsFile = writeToFile(predictions, tempDir);
@@ -77,4 +79,5 @@ public class GeneExtractor {
 		WriteToFileUtil.writeToFile(predictions, path);
 		return path;
 	}
+
 }

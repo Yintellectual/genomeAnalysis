@@ -21,6 +21,7 @@ import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
+import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
 public class GeneToProteinTranslate {
@@ -32,9 +33,8 @@ public class GeneToProteinTranslate {
 
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
-		String osName = System.getProperty("os.name");
-		if(osName.toUpperCase().contains("WINDOWS")){
-			return;
+		if(SystemUtil.isWindows()) {
+			return ;
 		}
 		try {
 			File geneFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "gene.fas").toFile();

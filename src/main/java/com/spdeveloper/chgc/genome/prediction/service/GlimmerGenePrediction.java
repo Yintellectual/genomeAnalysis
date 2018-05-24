@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
+import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
 public class GlimmerGenePrediction {
@@ -34,8 +35,7 @@ public class GlimmerGenePrediction {
 	
 	@PostConstruct
 	public void dependencyCheck() {
-		String osName = System.getProperty("os.name");
-		if(osName.toUpperCase().contains("WINDOWS")){
+		if(SystemUtil.isWindows()) {
 			return;
 		}
 		try {
