@@ -41,9 +41,9 @@ public class RpsBlastProteinAnnotation {
 			return;
 		}
 		try {
-			File rawPrFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
+			File prFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			File prFas = geneToProteinTranslate.edit(rawPrFas.toPath(), tempDir);
+			
 			File actual = rpsBlast(prFas, tempDir);
 			
 			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.cog");
