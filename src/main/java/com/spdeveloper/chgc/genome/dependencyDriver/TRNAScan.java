@@ -27,11 +27,19 @@ import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
 public class TRNAScan extends AbstractDependencyDriver{
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
-
+	private static final Path TEST_INPUT_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas");
+	private static final Path TEST_EXPECTED_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "test.trna");
+	
 	@Value("${cmdTemplate.tRNAscan}")
 	String cmdTemplate;
 
+	public TRNAScan() {
+		this(TEST_EXPECTED_FILE, TEST_INPUT_FILE);
+	}
+	public TRNAScan(Path testExpectedFile, Path...testInputFiles){
+		super(testExpectedFile, testInputFiles);
+	}
+	
 	public Path start(Path tempDir, Path... fas) throws IOException, InterruptedException {
 		Path inputFas = fas[0];
 		
