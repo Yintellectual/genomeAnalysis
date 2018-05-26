@@ -33,13 +33,19 @@ public class GlimmerGenePrediction {
 	@Value("${cmdTemplate.glimmerGenePrediction}")
 	String cmdTemplate;
 	
-	
+	@Value("${dependencyCheck}")
+	protected Boolean doDependencyCheck;
 	
 	@PostConstruct
 	public void dependencyCheck() {
 		if(SystemUtil.isWindows()) {
 			return;
 		}
+		if(!doDependencyCheck) {
+			log.info("Skip dependency check for Glimmer");
+			return ;
+		}
+	
 		try {
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
 			List<GenePrediction> glimmerPrediction = getGenePredictions(Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas").toFile(), tempDir);

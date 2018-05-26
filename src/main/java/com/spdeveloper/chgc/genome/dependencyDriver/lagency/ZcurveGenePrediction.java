@@ -33,12 +33,17 @@ public class ZcurveGenePrediction {
 	@Value("${cmdTemplate.zcurveGenePrediction}")
 	String cmdTemplate;
 	
-	
+	@Value("${dependencyCheck}")
+	protected Boolean doDependencyCheck;
 	
 	@PostConstruct
 	public void dependencyCheck() {
 		if(SystemUtil.isWindows()) {
 			return;
+		}
+		if(!doDependencyCheck) {
+			log.info("Skip dependency check for Zcurve");
+			return ;
 		}
 		try {
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
