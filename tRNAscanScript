@@ -1,2 +1,2 @@
 #!/bin/bash
-tRNAscan-SE $1 > $2
+tRNAscan-SE -B $1 > $2

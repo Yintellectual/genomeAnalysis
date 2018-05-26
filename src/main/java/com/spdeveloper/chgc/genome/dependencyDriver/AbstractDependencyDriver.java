@@ -59,6 +59,9 @@ public abstract class AbstractDependencyDriver {
 		} catch (Exception e) {
 			throw new MissDependencyException(this.getClass().getName()+" is not working.", e);
 		}
+		log.info("*********************************************************");
+		log.info("*"+this.getClass().getName()+" works fine!*");
+		log.info("*********************************************************");
 	}
 	
 	
