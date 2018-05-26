@@ -30,13 +30,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
+import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.dependencyDriver.RpsBlastProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.lagency.GlimmerGenePrediction;
 import com.spdeveloper.chgc.genome.dependencyDriver.lagency.ZcurveGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
-import com.spdeveloper.chgc.genome.prediction.service.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
@@ -112,7 +112,8 @@ public class GenePredictionNAnnotationController2 {
 		
 		
 		log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-		FileUtils.deleteDirectory(tempDir.toFile());
+		log.info("Deletion Disabled, tempDir="+tempDir.toFile().getAbsolutePath());
+		//FileUtils.deleteDirectory(tempDir.toFile());
 		return result;
 	}
 }

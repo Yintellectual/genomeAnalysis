@@ -1,0 +1,2 @@
+#!/bin/bash
+rpsblast -i $1 -o $2 -d /u/sysadm/dependencies/CDD/Cog -v 1 -b 1 -e 1e-5 -m7;

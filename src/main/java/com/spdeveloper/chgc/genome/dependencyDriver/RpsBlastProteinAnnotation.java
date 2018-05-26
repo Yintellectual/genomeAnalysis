@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
-import com.spdeveloper.chgc.genome.prediction.service.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;

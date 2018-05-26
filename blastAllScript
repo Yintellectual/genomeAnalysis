@@ -1,0 +1,2 @@
+#!/bin/bash
+blastall -p blastp -i $1 -o $2 -d /u/sysadm/dependencies/blast_nr_db/test-db/test-db.fas -v 1 -b 1 -e 1e-5 -m7 -a 20

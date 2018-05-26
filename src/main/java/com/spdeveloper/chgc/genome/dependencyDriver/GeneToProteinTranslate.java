@@ -1,4 +1,4 @@
-package com.spdeveloper.chgc.genome.prediction.service;
+package com.spdeveloper.chgc.genome.dependencyDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,51 +18,35 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
+import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
-public class GeneToProteinTranslate {
-
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+public class GeneToProteinTranslate extends AbstractDependencyDriver{
+	private static final Path TEST_EXPECTED_FILE =Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas");
+	private static final Path TEST_INPUT_FILE =Paths.get("src", "main", "resources", "files", "dependencyCheck", "gene.fas");			
 
 	@Value("${cmdTemplate.translate}")
 	String cmdTemplate;
 
-	@PostConstruct
-	public void dependencyCheck() throws IOException, InterruptedException {
-		if(SystemUtil.isWindows()) {
-			return ;
-		}
-		try {
-			File geneFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "gene.fas").toFile();
-			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			File actual = translateOnly(geneFas, tempDir);
-			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas");
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
-			if(comparisonReport.contains("identical")) {
-				
-			}else {
-				throw new MissDependencyException(comparisonReport);
-			}
-			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-			FileUtils.deleteDirectory(tempDir.toFile());
-		} catch (Exception e) {
-			throw new MissDependencyException("translateScript is not working.", e);
-		}
+	public GeneToProteinTranslate() {
+		super(TEST_EXPECTED_FILE, TEST_INPUT_FILE);
 	}
 
 	public File translate(File geneFas, Path tempDir) throws IOException, InterruptedException {
-		return edit(translateOnly(geneFas, tempDir).toPath(), tempDir);
+		return edit(start(tempDir, geneFas.toPath()), tempDir);
 	}
 	
-	public File translateOnly(File geneFas, Path tempDir) throws IOException, InterruptedException {
+	public Path start(Path tempDir, Path...justGeneFas) throws IOException, InterruptedException {
+		Path geneFas = justGeneFas[0];
+		
 		IntegratedProgram translate = new IntegratedProgram(cmdTemplate, null);
 		Path translateTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "rawPr.fas");
-		translate.execute(null, translateTempFile, geneFas.getAbsolutePath(), translateTempFile.toFile().getAbsolutePath());
-		return translateTempFile.toFile();
+		translate.execute(null, translateTempFile, geneFas.toFile().getAbsolutePath(), translateTempFile.toFile().getAbsolutePath());
+		return translateTempFile;
 	}
 	
 	public File edit(Path rawPrFas, Path tempDir) throws IOException {
