@@ -1,4 +1,4 @@
-package com.spdeveloper.chgc.genome.annotation.service;
+package com.spdeveloper.chgc.genome.dependencyDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,49 +18,52 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
-import com.spdeveloper.chgc.genome.prediction.service.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
+public abstract class AbstractDependencyDriver {
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
-public class TRNAScan {
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
-
-	@Value("${cmdTemplate.tRNAscan}")
-	String cmdTemplate;
-
-
+	private Path[] testInputFiles;
+	private Path testExpectedFile;
+	
+	public AbstractDependencyDriver() {
+		// TODO Auto-generated constructor stub
+	}
+	public AbstractDependencyDriver(Path testExpectedFile, Path...testInputFiles) {
+		this.testInputFiles = testInputFiles;
+		this.testExpectedFile = testExpectedFile;
+	}
+	
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
 		if(SystemUtil.isWindows()) {
 			return;
 		}
 		try {
-			File fas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas").toFile();
 			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			File actual = tRNAscan(fas, tempDir);
+			Path actual = start(tempDir, testInputFiles);
 			
-			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "test.trna");
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
+			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(testExpectedFile).toArray(new String[0]), Files.readAllLines(actual).toArray(new String[0]));
 			if(comparisonReport.contains("identical")) {
 				
 			}else {
 				throw new MissDependencyException(comparisonReport);
 			}
+			
 			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
 			FileUtils.deleteDirectory(tempDir.toFile());
 		} catch (Exception e) {
-			throw new MissDependencyException("tRNAscan is not working.", e);
+			throw new MissDependencyException(this.getClass().getName()+" is not working.", e);
 		}
 	}
 	
-	public File tRNAscan(File fas, Path tempDir) throws IOException, InterruptedException {
-		IntegratedProgram tRNAscan = new IntegratedProgram(cmdTemplate, null);
-		Path tRNAScanTempFile = Files.createTempFile(tempDir, "genomeAnalysis", ".trna");
-		tRNAscan.execute(null, tRNAScanTempFile, fas.getAbsolutePath(), tRNAScanTempFile.toFile().getAbsolutePath());
-		return tRNAScanTempFile.toFile();
-	}
+	
+	
+	public abstract Path start(Path tempDir, Path...inputFiles) throws IOException, InterruptedException ;
+	
 }
+
