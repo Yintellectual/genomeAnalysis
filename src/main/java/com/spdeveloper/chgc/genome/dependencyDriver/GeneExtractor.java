@@ -1,4 +1,4 @@
-package com.spdeveloper.chgc.genome.prediction.service;
+package com.spdeveloper.chgc.genome.dependencyDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
+import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
+import com.spdeveloper.chgc.genome.prediction.service.MissDependencyException;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
