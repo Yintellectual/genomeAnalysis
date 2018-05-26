@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spdeveloper.chgc.genome.dependencyDriver.GlimmerGenePrediction;
-import com.spdeveloper.chgc.genome.dependencyDriver.ZcurveGenePrediction;
+import com.spdeveloper.chgc.genome.dependencyDriver.lagency.GlimmerGenePrediction;
+import com.spdeveloper.chgc.genome.dependencyDriver.lagency.ZcurveGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 
 @Service 

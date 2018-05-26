@@ -26,45 +26,29 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
-public class RpsBlastProteinAnnotation {
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
-
+public class RpsBlastProteinAnnotation extends AbstractDependencyDriver{
+	private static final Path TEST_INPUT_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas");
+	private static final Path TEST_EXPECTED_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.cog");
+	
 	@Value("${cmdTemplate.rpsBlast}")
 	String cmdTemplate;
 
 	@Autowired
 	GeneToProteinTranslate geneToProteinTranslate;
-	
-	@PostConstruct
-	public void dependencyCheck() throws IOException, InterruptedException {
-		if(SystemUtil.isWindows()) {
-			return;
-		}
-		try {
-			File prFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
-			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			
-			File actual = rpsBlast(prFas, tempDir);
-			
-			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.cog");
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
-			if(comparisonReport.contains("identical")) {
-				
-			}else {
-				throw new MissDependencyException(comparisonReport);
-			}
-			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-			FileUtils.deleteDirectory(tempDir.toFile());
-		} catch (Exception e) {
-			throw new MissDependencyException("RpsBlast is not working.", e);
-		}
+
+	public RpsBlastProteinAnnotation() {
+		super(TEST_EXPECTED_FILE, TEST_INPUT_FILE);
 	}
 	
-	public File rpsBlast(File prFas, Path tempDir) throws IOException, InterruptedException {
+	@Override
+	public Path start(Path tempDir, Path... justPrFas) throws IOException, InterruptedException {
+		Path prFas = justPrFas[0];
+		
 		IntegratedProgram rpsBlast = new IntegratedProgram(cmdTemplate, null);
 		Path rpsBlastTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "pr.cog");
-		rpsBlast.execute(null, rpsBlastTempFile, prFas.getAbsolutePath(), rpsBlastTempFile.toFile().getAbsolutePath());
+		rpsBlast.execute(null, rpsBlastTempFile, prFas.toFile().getAbsolutePath(), rpsBlastTempFile.toFile().getAbsolutePath());
 		log.info(rpsBlastTempFile.toFile().getAbsolutePath());
-		return rpsBlastTempFile.toFile();
+		return rpsBlastTempFile;
 	}
+
 }

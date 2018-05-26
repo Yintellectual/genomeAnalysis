@@ -38,29 +38,43 @@ public abstract class AbstractDependencyDriver {
 		this.testExpectedFile = testExpectedFile;
 	}
 	
+	@Value("${dependencyCheck}")
+	protected Boolean doDependencyCheck;
+	
+	public boolean doDependencyCheck() {
+		// TODO Auto-generated method stub
+		return doDependencyCheck;
+	}
+	
 	@PostConstruct
 	public void dependencyCheck() throws IOException, InterruptedException {
 		if(SystemUtil.isWindows()) {
 			return;
 		}
-		try {
-			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			Path actual = start(tempDir, testInputFiles);
-			
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(testExpectedFile).toArray(new String[0]), Files.readAllLines(actual).toArray(new String[0]));
-			if(comparisonReport.contains("identical")) {
+		log.info("*********************************************************");
+		if(doDependencyCheck()) {
+			log.info("* Dependency Check For "+this.getClass().getName()+" starts now: *");
+			try {
+				Path tempDir = Files.createTempDirectory("genomeAnalysis");
+				Path actual = start(tempDir, testInputFiles);
 				
-			}else {
-				throw new MissDependencyException(comparisonReport);
+				String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(testExpectedFile).toArray(new String[0]), Files.readAllLines(actual).toArray(new String[0]));
+				if(comparisonReport.contains("identical")) {
+					
+				}else {
+					throw new MissDependencyException(comparisonReport);
+				}
+				
+				log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
+				FileUtils.deleteDirectory(tempDir.toFile());
+			} catch (Exception e) {
+				throw new MissDependencyException(this.getClass().getName()+" is not working.", e);
 			}
 			
-			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-			FileUtils.deleteDirectory(tempDir.toFile());
-		} catch (Exception e) {
-			throw new MissDependencyException(this.getClass().getName()+" is not working.", e);
+			log.info("*"+this.getClass().getName()+" works fine!*");
+		}else{
+			log.info("*Skip checking "+this.getClass().getName()+"*");
 		}
-		log.info("*********************************************************");
-		log.info("*"+this.getClass().getName()+" works fine!*");
 		log.info("*********************************************************");
 	}
 	

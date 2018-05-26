@@ -30,9 +30,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
-import com.spdeveloper.chgc.genome.dependencyDriver.GlimmerGenePrediction;
 import com.spdeveloper.chgc.genome.dependencyDriver.RpsBlastProteinAnnotation;
-import com.spdeveloper.chgc.genome.dependencyDriver.ZcurveGenePrediction;
+import com.spdeveloper.chgc.genome.dependencyDriver.lagency.GlimmerGenePrediction;
+import com.spdeveloper.chgc.genome.dependencyDriver.lagency.ZcurveGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
@@ -82,14 +82,14 @@ public class GenePredictionNAnnotationController2 {
 	    
 	    Path translatedFile = geneToProteinTranslate.translate(geneFasFile.toFile(), tempDir).toPath();
 	    
-	    File blastResult = blastAllProteinAnnotation.blastAll(translatedFile.toFile(), tempDir);
+	    Path blastResult = blastAllProteinAnnotation.start(tempDir, translatedFile);
 	    
-	    BlastOutput blastOutput = M7Parser.parse(blastResult);
+	    BlastOutput blastOutput = M7Parser.parse(blastResult.toFile());
 	    Flux<PrMatch> nrPrMatches = Flux.fromIterable(blastOutput.getBlastOutput_iterations().getPrMatchs());
 	    
-	    File cogResult = rpsBlastProteinAnnotation.rpsBlast(translatedFile.toFile(), tempDir);
+	    Path cogResult = rpsBlastProteinAnnotation.start(tempDir, translatedFile);
 	    
-	    BlastOutput cogOutput = M7Parser.parse(cogResult);
+	    BlastOutput cogOutput = M7Parser.parse(cogResult.toFile());
 	    Flux<PrMatch> cogPrMathes= Flux.fromIterable(cogOutput.getBlastOutput_iterations().getPrMatchs());
 	    
 	    Flux<GenePrediction> genePredictionFlux = Flux.fromIterable(genePrediction);

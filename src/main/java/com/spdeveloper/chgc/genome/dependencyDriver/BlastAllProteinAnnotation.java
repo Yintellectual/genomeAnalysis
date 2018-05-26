@@ -25,40 +25,27 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
-public class BlastAllProteinAnnotation {
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+public class BlastAllProteinAnnotation extends AbstractDependencyDriver{
+	private static final Path TEST_EXPECTED_FILE =Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.nr");
+	private static final Path TEST_INPUT_FILE =Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas");			
 
 	@Value("${cmdTemplate.blastAll}")
 	String cmdTemplate;
 
-
-	@PostConstruct
-	public void dependencyCheck() throws IOException, InterruptedException {
-		if(SystemUtil.isWindows()) {
-			return;
-		}
-		try {
-			File prFas = Paths.get("src", "main", "resources", "files", "dependencyCheck", "pr.fas").toFile();
-			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			File actual = blastAll(prFas, tempDir);
-			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Pr.nr");
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual.toPath()).toArray(new String[0]));
-			if(comparisonReport.contains("identical")) {
-				
-			}else {
-				throw new MissDependencyException(comparisonReport);
-			}
-			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-			FileUtils.deleteDirectory(tempDir.toFile());
-		} catch (Exception e) {
-			throw new MissDependencyException("blastAll is not working.", e);
-		}
+	
+	public BlastAllProteinAnnotation() {
+		super(TEST_EXPECTED_FILE, TEST_INPUT_FILE);
 	}
 	
-	public File blastAll(File prFas, Path tempDir) throws IOException, InterruptedException {
+	@Override
+	public Path start(Path tempDir, Path... justPrFas ) throws IOException, InterruptedException {
+		Path prFas = justPrFas[0];
+		
 		IntegratedProgram blastAll = new IntegratedProgram(cmdTemplate, null);
 		Path blastAllTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "pr.nr");
-		blastAll.execute(null, blastAllTempFile, prFas.getAbsolutePath(), blastAllTempFile.toFile().getAbsolutePath());
-		return blastAllTempFile.toFile();
+		blastAll.execute(null, blastAllTempFile, prFas.toFile().getAbsolutePath(), blastAllTempFile.toFile().getAbsolutePath());
+		return blastAllTempFile;
 	}
+
+
 }

@@ -40,6 +40,7 @@ public class TRNAScan extends AbstractDependencyDriver{
 		super(testExpectedFile, testInputFiles);
 	}
 	
+	@Override
 	public Path start(Path tempDir, Path... fas) throws IOException, InterruptedException {
 		Path inputFas = fas[0];
 		

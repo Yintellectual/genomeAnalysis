@@ -26,8 +26,11 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
 @Service
-public class GeneExtractor {
-
+public class GeneExtractor extends AbstractDependencyDriver{
+	private static final Path TEST_EXPECTED_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "gene.fas");
+	private static final Path TEST_FASTA =Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas");		
+	private static final Path TEST_PREDICTIONS =Paths.get("src", "main", "resources", "files", "dependencyCheck", "Gene.xlsx");
+	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Value("${cmdTemplate.extractor}")
@@ -36,44 +39,26 @@ public class GeneExtractor {
 	@Autowired
 	GenePredictionResultCombiner genePredictionResultCombiner;
 
-	@PostConstruct
-	public void dependencyCheck() throws IOException, InterruptedException {
-		if(SystemUtil.isWindows()) {
-			return;
-		}
-		try {
-			File fasta = Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas").toFile();
-			File predictions = Paths.get("src", "main", "resources", "files", "dependencyCheck", "Gene.xlsx").toFile();
-			Path tempDir = Files.createTempDirectory("genomeAnalysis");
-			Path actual = extract(fasta, predictions, tempDir).toPath();
-			Path expected = Paths.get("src", "main", "resources", "files", "dependencyCheck", "gene.fas");
-			String comparisonReport = ComparisonUtil.diffs(Files.readAllLines(expected).toArray(new String[0]), Files.readAllLines(actual).toArray(new String[0]));
-			if(comparisonReport.contains("identical")) {
-				
-			}else {
-				throw new MissDependencyException(comparisonReport);
-			}
-			log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-			FileUtils.deleteDirectory(tempDir.toFile());
-		} catch (Exception e) {
-			throw new MissDependencyException("GeneExtractor is not working.", e);
-		}
+	public GeneExtractor() {
+		super(TEST_EXPECTED_FILE, TEST_FASTA, TEST_PREDICTIONS);
 	}
-
-
 	
 	public File extract(File fastaFile, List<GenePrediction> predictions, Path tempDir)
 			throws IOException, InterruptedException {
 		Path predictionsFile = writeToFile(predictions, tempDir);
-		return extract(fastaFile, predictionsFile.toFile(), tempDir);
+		return start(tempDir, fastaFile.toPath(), predictionsFile).toFile();
 	}
 
-	public File extract(File fastaFile, File predictions, Path tempDir) throws IOException, InterruptedException {
+	@Override
+	public Path start(Path tempDir, Path...fastaAndPredictions) throws IOException, InterruptedException {
+		Path fastaFile = fastaAndPredictions[0];
+		Path predictions = fastaAndPredictions[1]; 
+		
 		IntegratedProgram extractor = new IntegratedProgram(cmdTemplate, null);
 		Path extractorTempFile = Files.createTempFile(tempDir, "genomeAnalysis", "gene.fas");
-		extractor.execute(null, extractorTempFile, fastaFile.getAbsolutePath(), predictions.getAbsolutePath(),
+		extractor.execute(null, extractorTempFile, fastaFile.toFile().getAbsolutePath(), predictions.toFile().getAbsolutePath(),
 				extractorTempFile.toFile().getAbsolutePath());
-		return extractorTempFile.toFile();
+		return extractorTempFile;
 	}
 
 	private Path writeToFile(List<GenePrediction> predictions, Path tempDir) throws IOException {
