@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.service.BlastAllProteinAnnotation;
+import com.spdeveloper.chgc.genome.annotation.service.RpsBlastProteinAnnotation;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GeneExtractor;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
@@ -58,7 +59,8 @@ public class GenePredictionNAnnotationController2 {
 	GeneToProteinTranslate geneToProteinTranslate;
 	@Autowired
 	BlastAllProteinAnnotation blastAllProteinAnnotation;
-	
+	@Autowired
+	RpsBlastProteinAnnotation rpsBlastProteinAnnotation;
 	
 	@PostMapping("/genomeAnnotation2")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
@@ -83,15 +85,17 @@ public class GenePredictionNAnnotationController2 {
 	    File blastResult = blastAllProteinAnnotation.blastAll(translatedFile.toFile(), tempDir);
 	    
 	    BlastOutput blastOutput = M7Parser.parse(blastResult);
-	    Flux<PrMatch> prMatches = Flux.fromIterable(blastOutput.getBlastOutput_iterations().getPrMatchs());
+	    Flux<PrMatch> nrPrMatches = Flux.fromIterable(blastOutput.getBlastOutput_iterations().getPrMatchs());
 	    
-	    //File cogResult = 
-	    //Flux<PrMatch> prMatches = Flux.fromIterable(M7Parser.parse(cogResult).getBlastOutput_iterations().getPrMatchs());
+	    File cogResult = rpsBlastProteinAnnotation.rpsBlast(translatedFile.toFile(), tempDir);
+	    
+	    BlastOutput cogOutput = M7Parser.parse(cogResult);
+	    Flux<PrMatch> cogPrMathes= Flux.fromIterable(cogOutput.getBlastOutput_iterations().getPrMatchs());
 	    
 	    Flux<GenePrediction> genePredictionFlux = Flux.fromIterable(genePrediction);
-	    List<GeneAnnotated> geneAnnotateds = genePredictionFlux.zipWith(prMatches, (g, p)->{
-	    	return new GeneAnnotated(g, p, null);
-	    }  ).collectList().block();
+	    List<GeneAnnotated> geneAnnotateds = Flux.zip(genePredictionFlux, nrPrMatches, cogPrMathes).map(t3->{
+	    	return new GeneAnnotated(t3.getT1(), t3.getT2(), t3.getT3());
+	    }).collectList().block();
 	    
 	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");
 	    WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
