@@ -46,7 +46,7 @@ public class AnnotationExcelWriter {
 		CellStyle headerCellStyle = workbook.createCellStyle();
 		headerCellStyle.setFont(headerFont);
 
-		Sheet sheet0_dna = workbook.createSheet("DNA");
+		Sheet sheet0_dna = workbook.createSheet("CDS");
 		if (geneAnnotateds != null) {
 			TwoDimensionalDataToExcelSheet.write(DNA_HEADERS, GeneAnnotated.listTo2Dimensional(geneAnnotateds), sheet0_dna);
 		}

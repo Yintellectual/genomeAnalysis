@@ -116,7 +116,7 @@ public class GeneAnnotated {
 		if(cog_hit_def==null||cog_hit_def.isEmpty()) {
 			
 		}else {
-			Pattern pattern = Pattern.compile("(.*)\\[(.*)\\]");
+			Pattern pattern = Pattern.compile("(COG\\d+),.*\\[(.*)\\]");
 			Matcher matcher = pattern.matcher(cog_hit_def);
 			if(matcher.find()) {
 				this.cog = matcher.group(1).trim();

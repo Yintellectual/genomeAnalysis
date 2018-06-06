@@ -69,7 +69,7 @@ public class GeneAnnotatedPrMatchCogConstructorTest {
 		String cog_hit_def = "COG2252, COG2252, Permeases [General function prediction only].";
 		GeneAnnotated sample  = new GeneAnnotated(genePrediction, sample_Multispecies, new PrMatch("ORF_0001", cog_hit_def));
 		
-		assertEquals("COG2252, COG2252, Permeases", sample.getCog());
+		assertEquals("COG2252", sample.getCog());
 		assertEquals("General function prediction only", sample.getCog_class());
 	}
 }
