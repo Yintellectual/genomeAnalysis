@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated;
+import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated.RNAType;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
@@ -116,10 +117,12 @@ public class GenePredictionNAnnotationController2 {
 	    //generate rnaAnnotations using both tRNAScanner and RNAmmer
 	    Path tRNAScanResult = tRNAScan.start(tempDir, fastaFile.toPath());
 	    List<RnaAnnotated> tRNAAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).filter(e->e!=null).collect(Collectors.toList());
+	    RnaAnnotated.generateNameByIndexNumber(tRNAAnnotateds, RNAType.tRNA);
 	    rnaAnnotateds.addAll(tRNAAnnotateds);
 	    
 	    Path rnammerResult = rnammer.start(tempDir, fastaFile.toPath());
 	    List<RnaAnnotated> rRNAAnnotateds = Files.readAllLines(rnammerResult).stream().map(RnaAnnotated::parseRNAmmer).filter(e->e!=null).collect(Collectors.toList());
+	    RnaAnnotated.generateNameByIndexNumber(rRNAAnnotateds, RNAType.rRNA);
 	    rnaAnnotateds.addAll(rRNAAnnotateds);
 	    
 	    

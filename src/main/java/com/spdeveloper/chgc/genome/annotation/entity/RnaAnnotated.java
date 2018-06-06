@@ -29,7 +29,7 @@ public class RnaAnnotated{
 	public static ArrayList<ArrayList<Object>>  listTo2Dimensional(List<RnaAnnotated> rnaAnnotateds){
 		return new ArrayList<>(rnaAnnotateds.parallelStream().map(RnaAnnotated::toArrayList).collect(Collectors.toList()));
 	}
-	public static void generateNameByIndexNumber(List<GeneAnnotated> geneAnnotateds, RNAType rnaType) {
+	public static void generateNameByIndexNumber(List<RnaAnnotated> geneAnnotateds, RNAType rnaType) {
 		for(int i=0;i<geneAnnotateds.size();i++) {
 			String name = String.format(rnaType+"_%02d", i);
 		}
