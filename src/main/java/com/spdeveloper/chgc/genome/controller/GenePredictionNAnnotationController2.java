@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
+import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
@@ -61,8 +62,10 @@ public class GenePredictionNAnnotationController2 {
 	BlastAllProteinAnnotation blastAllProteinAnnotation;
 	@Autowired
 	RpsBlastProteinAnnotation rpsBlastProteinAnnotation;
+	@Autowired
+	AnnotationExcelWriter AnnotationExcelWriter;
 	
-	@PostMapping("/genomeAnnotation2")
+	@PostMapping("/genomeAnnotation")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
 		
 		//save .fas file under /files/fas/
@@ -97,11 +100,20 @@ public class GenePredictionNAnnotationController2 {
 	    	return new GeneAnnotated(t3.getT1(), t3.getT2(), t3.getT3());
 	    }).collectList().block();
 	    
+	    //generate rnaAnnotations using both tRNAScanner and RNAmmer
+	    
+	    
+	    //write both geneAnnotations and rnaAnnotations to a xlsx file, with geneAnnotations be the first sheet and rnaAnnotations be the second. 
 	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");
-	    WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
+	    //WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
+	    AnnotationExcelWriter.write(annotationFile, geneAnnotateds, null);
 	    
-	    //edit and save
 	    
+	    
+	    
+	    //zip resulting files: fasta(the input file), gene.fas, pr.fas, and Annotation.xlsx
+	    
+	    //start download
 	    HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		responseHeaders.set("charset", "utf-8");
@@ -112,8 +124,8 @@ public class GenePredictionNAnnotationController2 {
 		
 		
 		log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
-		log.info("Deletion Disabled, tempDir="+tempDir.toFile().getAbsolutePath());
-		//FileUtils.deleteDirectory(tempDir.toFile());
+		//log.info("Deletion Disabled, tempDir="+tempDir.toFile().getAbsolutePath());
+		FileUtils.deleteDirectory(tempDir.toFile());
 		return result;
 	}
 }

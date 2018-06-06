@@ -19,7 +19,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
-import com.spdeveloper.chgc.genome.util.excel.GeneAnnotatedToExcel;
+import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
+
 import com.spdeveloper.chgc.genome.visualization.entity.DNA;
 import com.spdeveloper.chgc.genome.visualization.service.DNAParser;
 
@@ -33,10 +34,10 @@ import reactor.util.context.Context;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GeneAnnotatedToExcelTest {
+public class GeneAnnotatedToExcelSheetTest {
 	
 	@Autowired
-	GeneAnnotatedToExcel geneAnnotatedToExcel;
+	AnnotationExcelWriter annotationExcelWriter;
 	
 	List<GeneAnnotated> data ;
 	
@@ -56,7 +57,7 @@ public class GeneAnnotatedToExcelTest {
 	@Test
 	public void parseBackIntoMap() throws IOException {
 		Path testFile = Paths.get("test.xlsx");
-		geneAnnotatedToExcel.write(testFile, data);
+		annotationExcelWriter.write(testFile, data, null);
 		
 		try(InputStream inputStream = new FileInputStream(testFile.toFile())) {
 			List<DNA> dnas = dnaParser.parse(inputStream, 0);

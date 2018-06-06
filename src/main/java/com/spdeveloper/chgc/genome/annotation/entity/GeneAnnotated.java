@@ -1,14 +1,20 @@
 package com.spdeveloper.chgc.genome.annotation.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
+
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import static com.spdeveloper.chgc.genome.util.java.SpDeveloperStringUtil.*;
 
 @Data
 @NoArgsConstructor
@@ -24,6 +30,45 @@ public class GeneAnnotated {
 	private String cog;
 	private String cog_class;
 
+	public static ArrayList<ArrayList<Object>> listTo2Dimensional(List<GeneAnnotated> geneAnnotateds){
+		return new ArrayList<>(geneAnnotateds.parallelStream().map(GeneAnnotated::toArrayList).collect(Collectors.toList()));
+	}
+	/*
+	 * an object can only be type Integer or String
+	 * */
+	public ArrayList<Object> toArrayList() {
+		ArrayList<Object> result = new ArrayList<Object>(9);
+		
+		result.add(0, mapNullToEmptyString(getName()).trim());
+		int start = 0;
+		int stop = 0;
+		if (getPositive()) {
+			start = getStart();
+			stop = getStop();
+		} else {
+			stop = getStart();
+			start = getStop();
+		}
+
+		result.add(1, start);
+
+		result.add(2, stop);
+
+		result.add(3, getLength());
+
+		result.add(4, mapNullToEmptyString(getProduct()));
+
+		result.add(5, mapNullToEmptyString(getBest_hit_organism()));
+
+		result.add(6, mapNullToEmptyString(getKo()));
+
+		result.add(7, mapNullToEmptyString(getCog()));
+
+		result.add(8, mapNullToEmptyString(getCog_class()));
+
+		return result;
+	}
+	
 	public GeneAnnotated(GenePrediction g, PrMatch blast, PrMatch cog) {
 		this.name = g.getName();
 		this.start = g.getStart();

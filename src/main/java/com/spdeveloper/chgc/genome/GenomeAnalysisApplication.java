@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
+import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
@@ -53,14 +55,13 @@ public class GenomeAnalysisApplication {
 		writer.write(content);
 		writer.close();
 	}
-
+	
 	@Bean
 	CommandLineRunner commandLineRunner() {
 		return new CommandLineRunner() {
 			
 			@Override
 			public void run(String... args) throws Exception {
-
 
 //				
 				

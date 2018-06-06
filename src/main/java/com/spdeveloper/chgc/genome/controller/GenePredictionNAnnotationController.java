@@ -38,7 +38,7 @@ import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 
 import reactor.core.publisher.Flux;
 
-@Controller
+
 public class GenePredictionNAnnotationController {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
