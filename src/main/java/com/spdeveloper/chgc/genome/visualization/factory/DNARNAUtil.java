@@ -17,13 +17,13 @@ public class DNARNAUtil {
 	
 	public static String getRNAType(RNA rna) {
 		String product = rna.getProduct();
-		if (mininize(product).contains("RIBOSOMALRNA")) {
+		if (mininize(product).contains("RIBOSOMALRNA")||mininize(product).contains("RRNA")) {
 			return "rRNA";
 		} else if (mininize(product).contains("TRNA")) {
 			return "tRNA";
 		} else {
 			throw new WrongExcelFormatException(
-					"Some RNA product contains no key words \"Ribosomal RNA\" or \"TRNA\".");
+					"Some RNA product contains no key words \"Ribosomal RNA\", or \"RRNA\" or \"TRNA\".");
 		}
 	}
 	

@@ -1,16 +1,20 @@
 package com.spdeveloper.chgc.genome.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.annotation.Annotation;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +54,8 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
+import com.spdeveloper.chgc.genome.util.zip.ZipDirectory;
+import com.spdeveloper.chgc.genome.visualization.entity.Wrapper;
 
 import reactor.core.publisher.Flux;
 
@@ -127,21 +133,29 @@ public class GenePredictionNAnnotationController2 {
 	    
 	    
 	    //write both geneAnnotations and rnaAnnotations to a xlsx file, with geneAnnotations be the first sheet and rnaAnnotations be the second. 
-	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");
+	    Path annotationFile = Files.createTempFile(tempDir, "genomeAnalysis", "Annotation.xlsx");
 	    //WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
 	    AnnotationExcelWriter.write(annotationFile, geneAnnotateds, rnaAnnotateds);
 	    
 	    
 	    
+        
 	    
 	    //zip resulting files: fasta(the input file), gene.fas, pr.fas, and Annotation.xlsx
+	    ByteArrayOutputStream zipBuffer = new ByteArrayOutputStream();
+	    ZipDirectory.doZipFiles(new HashMap<String, Path>(){{
+	    	put("gene.fas", geneFasFile);
+	    	put("pr.fas", translatedFile);
+	    	put("Annotation.xlsx", annotationFile);
+	    }}, zipBuffer);
+	    
 	    
 	    //start download
 	    HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		responseHeaders.set("charset", "utf-8");
 		responseHeaders.set("Content-disposition", "attachment; filename=" + "Annotation.xlsx");
-		Resource resource = new InputStreamResource(new FileInputStream(annotationFile.toFile()));
+		Resource resource = new InputStreamResource(new ByteArrayInputStream(zipBuffer.toByteArray()));
 		//Resource resource = new InputStreamResource(new FileInputStream(translatedFile.toFile()));
 		ResponseEntity<Resource> result = new ResponseEntity<>(resource, responseHeaders, HttpStatus.OK);
 		
