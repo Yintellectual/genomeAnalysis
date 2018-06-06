@@ -154,7 +154,7 @@ public class GenePredictionNAnnotationController2 {
 	    HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		responseHeaders.set("charset", "utf-8");
-		responseHeaders.set("Content-disposition", "attachment; filename=" + "Annotation.xlsx");
+		responseHeaders.set("Content-disposition", "attachment; filename=" + "result.zip");
 		Resource resource = new InputStreamResource(new ByteArrayInputStream(zipBuffer.toByteArray()));
 		//Resource resource = new InputStreamResource(new FileInputStream(translatedFile.toFile()));
 		ResponseEntity<Resource> result = new ResponseEntity<>(resource, responseHeaders, HttpStatus.OK);
