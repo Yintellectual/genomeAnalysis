@@ -6,6 +6,10 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -16,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated.RNAType;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.Hit;
@@ -50,4 +55,22 @@ public class RNAAnnotatedFactoryMethodsTest {
 		
 		assertNull(actual);
 	}
+	
+	@Test 
+	public void generateNameByIndex() {
+		List<RnaAnnotated> sample = new ArrayList<>();
+		sample.add(RnaAnnotated.parseTRNAscan("ben181  	3	428181	428257	Arg	TCT	0	0	80.83"));
+		sample.add(RnaAnnotated.parseTRNAscan("ben181  	3	428181	428257	Arg	TCT	0	0	80.83"));
+		sample.add(RnaAnnotated.parseTRNAscan("ben181  	3	428181	428257	Arg	TCT	0	0	80.83"));
+		sample.add(RnaAnnotated.parseTRNAscan("ben181  	3	428181	428257	Arg	TCT	0	0	80.83"));
+		sample.add(RnaAnnotated.parseTRNAscan("ben181  	3	428181	428257	Arg	TCT	0	0	80.83"));
+		
+		RnaAnnotated.generateNameByIndexNumber(sample, RNAType.tRNA);
+		assertEquals("tRNA_01", sample.get(0).getName());
+		assertEquals("tRNA_02", sample.get(1).getName());
+		assertEquals("tRNA_03", sample.get(2).getName());
+		assertEquals("tRNA_04", sample.get(3).getName());
+		assertEquals("tRNA_05", sample.get(4).getName());
+	}
+	
 }

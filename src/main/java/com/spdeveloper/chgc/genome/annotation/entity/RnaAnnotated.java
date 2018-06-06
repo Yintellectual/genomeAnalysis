@@ -31,7 +31,8 @@ public class RnaAnnotated{
 	}
 	public static void generateNameByIndexNumber(List<RnaAnnotated> geneAnnotateds, RNAType rnaType) {
 		for(int i=0;i<geneAnnotateds.size();i++) {
-			String name = String.format(rnaType+"_%02d", i);
+			String name = String.format(rnaType+"_%02d", i+1);
+			geneAnnotateds.get(i).setName(name);
 		}
 	}
 	public ArrayList<Object>  toArrayList() {
