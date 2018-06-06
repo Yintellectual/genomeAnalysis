@@ -24,12 +24,12 @@ import com.spdeveloper.chgc.genome.util.debug.ComparisonUtil;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.system.SystemUtil;
 
-@Service
+//@Service
 public class RNAmmer extends AbstractDependencyDriver{
-	private static final Path TEST_INPUT_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "short.fas");
-	private static final Path TEST_EXPECTED_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "test.trna");
+	private static final Path TEST_INPUT_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "ecoli.fsa");
+	private static final Path TEST_EXPECTED_FILE = Paths.get("src", "main", "resources", "files", "dependencyCheck", "ecoli.gff");
 	
-	@Value("${cmdTemplate.tRNAscan}")
+	@Value("${cmdTemplate.rnammer}")
 	String cmdTemplate;
 
 	public RNAmmer() {
@@ -44,7 +44,7 @@ public class RNAmmer extends AbstractDependencyDriver{
 		Path inputFas = fas[0];
 		
 		IntegratedProgram tRNAscan = new IntegratedProgram(cmdTemplate, null);
-		Path tRNAScanTempFile = Files.createTempFile(tempDir, "genomeAnalysis", ".trna");
+		Path tRNAScanTempFile = Files.createTempFile(tempDir, "genomeAnalysis", ".gff");
 		tRNAscan.execute(null, tRNAScanTempFile, inputFas.toFile().getAbsolutePath(), tRNAScanTempFile.toFile().getAbsolutePath());
 		return tRNAScanTempFile;
 	}

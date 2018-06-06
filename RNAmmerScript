@@ -1,0 +1,2 @@
+#!/bin/bash
+perl /u/sysadm/dependencies/RNAmmer/rnammer -S bac -m lsu,ssu,tsu -gff - < $1 >$2

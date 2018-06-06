@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +35,7 @@ import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
+import com.spdeveloper.chgc.genome.dependencyDriver.RNAmmer;
 import com.spdeveloper.chgc.genome.dependencyDriver.RpsBlastProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.TRNAScan;
 import com.spdeveloper.chgc.genome.dependencyDriver.lagency.GlimmerGenePrediction;
@@ -66,7 +69,8 @@ public class GenePredictionNAnnotationController2 {
 	RpsBlastProteinAnnotation rpsBlastProteinAnnotation;
 	@Autowired
 	TRNAScan tRNAScan;
-	
+	@Autowired
+	RNAmmer rnammer;
 	@Autowired
 	AnnotationExcelWriter AnnotationExcelWriter;
 	
@@ -74,6 +78,8 @@ public class GenePredictionNAnnotationController2 {
 	
 	@PostMapping("/genomeAnnotation")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
+		
+		List<RnaAnnotated> rnaAnnotateds = new ArrayList<>();
 		
 		//save .fas file under /files/fas/
 		InputStream initialStream = fas.getInputStream();
@@ -109,7 +115,13 @@ public class GenePredictionNAnnotationController2 {
 	    
 	    //generate rnaAnnotations using both tRNAScanner and RNAmmer
 	    Path tRNAScanResult = tRNAScan.start(tempDir, fastaFile.toPath());
-	    List<RnaAnnotated> rnaAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).collect(Collectors.toList());
+	    List<RnaAnnotated> tRNAAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).filter(e->e!=null).collect(Collectors.toList());
+	    rnaAnnotateds.addAll(tRNAAnnotateds);
+	    
+	    Path rnammerResult = rnammer.start(tempDir, fastaFile.toPath());
+	    List<RnaAnnotated> rRNAAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).filter(e->e!=null).collect(Collectors.toList());
+	    rnaAnnotateds.addAll(rRNAAnnotateds);
+	    
 	    
 	    //write both geneAnnotations and rnaAnnotations to a xlsx file, with geneAnnotations be the first sheet and rnaAnnotations be the second. 
 	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");
