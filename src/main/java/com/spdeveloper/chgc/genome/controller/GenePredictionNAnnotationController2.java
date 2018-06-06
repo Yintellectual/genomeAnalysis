@@ -28,11 +28,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
+import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.dependencyDriver.RpsBlastProteinAnnotation;
+import com.spdeveloper.chgc.genome.dependencyDriver.TRNAScan;
 import com.spdeveloper.chgc.genome.dependencyDriver.lagency.GlimmerGenePrediction;
 import com.spdeveloper.chgc.genome.dependencyDriver.lagency.ZcurveGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
@@ -63,7 +65,12 @@ public class GenePredictionNAnnotationController2 {
 	@Autowired
 	RpsBlastProteinAnnotation rpsBlastProteinAnnotation;
 	@Autowired
+	TRNAScan tRNAScan;
+	
+	@Autowired
 	AnnotationExcelWriter AnnotationExcelWriter;
+	
+	
 	
 	@PostMapping("/genomeAnnotation")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
@@ -101,12 +108,13 @@ public class GenePredictionNAnnotationController2 {
 	    }).collectList().block();
 	    
 	    //generate rnaAnnotations using both tRNAScanner and RNAmmer
-	    
+	    Path tRNAScanResult = tRNAScan.start(tempDir, fastaFile.toPath());
+	    List<RnaAnnotated> rnaAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).collect(Collectors.toList());
 	    
 	    //write both geneAnnotations and rnaAnnotations to a xlsx file, with geneAnnotations be the first sheet and rnaAnnotations be the second. 
 	    Path annotationFile = Paths.get("src", "main", "resources", "files", "fas", "Annotation.xlsx");
 	    //WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
-	    AnnotationExcelWriter.write(annotationFile, geneAnnotateds, null);
+	    AnnotationExcelWriter.write(annotationFile, geneAnnotateds, rnaAnnotateds);
 	    
 	    
 	    
