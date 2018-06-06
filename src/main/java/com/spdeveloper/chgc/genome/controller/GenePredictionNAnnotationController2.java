@@ -119,7 +119,7 @@ public class GenePredictionNAnnotationController2 {
 	    rnaAnnotateds.addAll(tRNAAnnotateds);
 	    
 	    Path rnammerResult = rnammer.start(tempDir, fastaFile.toPath());
-	    List<RnaAnnotated> rRNAAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).filter(e->e!=null).collect(Collectors.toList());
+	    List<RnaAnnotated> rRNAAnnotateds = Files.readAllLines(rnammerResult).stream().map(RnaAnnotated::parseRNAmmer).filter(e->e!=null).collect(Collectors.toList());
 	    rnaAnnotateds.addAll(rRNAAnnotateds);
 	    
 	    
