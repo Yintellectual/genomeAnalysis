@@ -86,22 +86,26 @@ public class GenePredictionNAnnotationController2 {
 	@PostMapping("/genomeAnnotation")
 	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
 		
+		String fastaName = "";
+		
 		List<RnaAnnotated> rnaAnnotateds = new ArrayList<>();
 		
-		//save .fas file under /files/fas/
+		//save all the files under a temporary directory which is deleted later
+		Path tempDir = Files.createTempDirectory("genomeAnalysis");
+		
 		InputStream initialStream = fas.getInputStream();
 		byte[] buffer = new byte[initialStream.available()];
 		initialStream.read(buffer);
 				
-		File fastaFile = new File("src/main/resources/files/fas/temp.fas");
-		OutputStream outStream = new FileOutputStream(fastaFile);
+		Path fastaFile = Files.createTempFile(tempDir, "genomeAnalysis", "fasta.fas");
+		OutputStream outStream = new FileOutputStream(fastaFile.toFile());
 		outStream.write(buffer);
 		outStream.close();
 
-		Path tempDir = Files.createTempDirectory("genomeAnalysis");
-		List<GenePrediction> genePrediction = genePredictionResultCombiner.combine(fastaFile, tempDir);
-		
-		Path geneFasFile = geneExtractor.extract(fastaFile, genePrediction, tempDir).toPath();
+		List<GenePrediction> genePrediction = genePredictionResultCombiner.combine(fastaFile.toFile(), tempDir);
+		fastaName = Files.readAllLines(fastaFile).get(0).split(">")[1]; 
+				
+		Path geneFasFile = geneExtractor.extract(fastaFile.toFile(), genePrediction, tempDir).toPath();
 	    
 	    Path translatedFile = geneToProteinTranslate.translate(geneFasFile.toFile(), tempDir).toPath();
 	    
@@ -121,12 +125,12 @@ public class GenePredictionNAnnotationController2 {
 	    }).collectList().block();
 	    
 	    //generate rnaAnnotations using both tRNAScanner and RNAmmer
-	    Path tRNAScanResult = tRNAScan.start(tempDir, fastaFile.toPath());
+	    Path tRNAScanResult = tRNAScan.start(tempDir, fastaFile);
 	    List<RnaAnnotated> tRNAAnnotateds = Files.readAllLines(tRNAScanResult).stream().map(RnaAnnotated::parseTRNAscan).filter(e->e!=null).collect(Collectors.toList());
 	    RnaAnnotated.generateNameByIndexNumber(tRNAAnnotateds, RNAType.tRNA);
 	    rnaAnnotateds.addAll(tRNAAnnotateds);
 	    
-	    Path rnammerResult = rnammer.start(tempDir, fastaFile.toPath());
+	    Path rnammerResult = rnammer.start(tempDir, fastaFile);
 	    List<RnaAnnotated> rRNAAnnotateds = Files.readAllLines(rnammerResult).stream().map(RnaAnnotated::parseRNAmmer).filter(e->e!=null).collect(Collectors.toList());
 	    RnaAnnotated.generateNameByIndexNumber(rRNAAnnotateds, RNAType.rRNA);
 	    rnaAnnotateds.addAll(rRNAAnnotateds);
@@ -137,32 +141,29 @@ public class GenePredictionNAnnotationController2 {
 	    //WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
 	    AnnotationExcelWriter.write(annotationFile, geneAnnotateds, rnaAnnotateds);
 	    
-	    
-	    
-        
-	    
 	    //zip resulting files: fasta(the input file), gene.fas, pr.fas, and Annotation.xlsx
 	    ByteArrayOutputStream zipBuffer = new ByteArrayOutputStream();
-	    ZipDirectory.doZipFiles(new HashMap<String, Path>(){{
+	    HashMap<String, Path> resultingFiles = new HashMap<String, Path>(){{
 	    	put("gene.fas", geneFasFile);
 	    	put("pr.fas", translatedFile);
 	    	put("Annotation.xlsx", annotationFile);
-	    }}, zipBuffer);
+	    }};
+	    resultingFiles.put(fastaName+".fasta", fastaFile);
+	    ZipDirectory.doZipFiles(resultingFiles, zipBuffer);
 	    
-	    
-	    //start download
+	    //ready the downloadable
 	    HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		responseHeaders.set("charset", "utf-8");
-		responseHeaders.set("Content-disposition", "attachment; filename=" + "result.zip");
+		responseHeaders.set("Content-disposition", "attachment; filename=" + fastaName+".zip");
 		Resource resource = new InputStreamResource(new ByteArrayInputStream(zipBuffer.toByteArray()));
-		//Resource resource = new InputStreamResource(new FileInputStream(translatedFile.toFile()));
 		ResponseEntity<Resource> result = new ResponseEntity<>(resource, responseHeaders, HttpStatus.OK);
 		
-		
+		//delete all temporary files with the folder
 		log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
 		//log.info("Deletion Disabled, tempDir="+tempDir.toFile().getAbsolutePath());
 		FileUtils.deleteDirectory(tempDir.toFile());
+		
 		return result;
 	}
 }
