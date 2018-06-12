@@ -37,7 +37,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spdeveloper.chgc.genome.util.debug.ComparisonReportCreator;
-import com.spdeveloper.chgc.genome.util.zip.ZipDirectory;
+import com.spdeveloper.chgc.genome.util.zip.SpDeveloperZipUtil;
 import com.spdeveloper.chgc.genome.visualization.entity.DNA;
 import com.spdeveloper.chgc.genome.visualization.entity.RNA;
 import com.spdeveloper.chgc.genome.visualization.entity.Wrapper;
@@ -134,7 +134,7 @@ public class SevenFilesController {
 		
 		
 	    OutputStream output= new FileOutputStream(getFile("zips", fileName+".zip"));  
-	    ZipDirectory.zipDirectory(new HashMap<String, String>(){{
+	    SpDeveloperZipUtil.zipDirectory(new HashMap<String, String>(){{
 	    	put("DNA_Positive.map", fileContent(positiveDNA));
 	    	put("DNA_Negative.map", fileContent(negativeDNA));
 	    	put("RNA_Positive.map", fileContent(positiveRNA));

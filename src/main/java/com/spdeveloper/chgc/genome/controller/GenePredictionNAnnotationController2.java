@@ -54,7 +54,7 @@ import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
-import com.spdeveloper.chgc.genome.util.zip.ZipDirectory;
+import com.spdeveloper.chgc.genome.util.zip.SpDeveloperZipUtil;
 import com.spdeveloper.chgc.genome.visualization.entity.Wrapper;
 
 import reactor.core.publisher.Flux;
@@ -149,7 +149,7 @@ public class GenePredictionNAnnotationController2 {
 	    	put("Annotation.xlsx", annotationFile);
 	    }};
 	    resultingFiles.put(fastaName+".fasta", fastaFile);
-	    ZipDirectory.doZipFiles(resultingFiles, zipBuffer);
+	    SpDeveloperZipUtil.doZipFiles(resultingFiles, zipBuffer);
 	    
 	    //ready the downloadable
 	    HttpHeaders responseHeaders = new HttpHeaders();

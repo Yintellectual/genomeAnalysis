@@ -42,7 +42,7 @@ import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombin
 import com.spdeveloper.chgc.genome.util.xml.M7Parser;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
-import com.spdeveloper.chgc.genome.util.zip.ZipDirectory;
+import com.spdeveloper.chgc.genome.util.zip.SpDeveloperZipUtil;
 import com.spdeveloper.chgc.genome.visualization.service.COGColorParser;
 
 import reactor.core.publisher.Flux;
@@ -205,7 +205,7 @@ public class FastaToAnnotationService {
 			}
 		};
 		resultingFiles.put(fastaName + ".fasta", fastaFile);
-		ZipDirectory.doZipFiles(resultingFiles, resultOutputStream);
+		SpDeveloperZipUtil.doZipFiles(resultingFiles, resultOutputStream);
 		resultOutputStream.close();
 
 		// delete all temporary files with the folder
