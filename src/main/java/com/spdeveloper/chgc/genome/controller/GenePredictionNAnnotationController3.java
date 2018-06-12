@@ -82,7 +82,7 @@ public class GenePredictionNAnnotationController3 {
 		outStream.close();
 		
 		//get annotation file
-		Path result = fastaToAnnotationService.start(fastaFile, Paths.get("."));
+		Path result = fastaToAnnotationService.start(fastaFile);
 		
 	    
 	    //ready the download
