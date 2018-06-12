@@ -1,19 +1,12 @@
-package com.spdeveloper.chgc.genome.controller;
+package com.spdeveloper.chgc.genome.annotation.service;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.annotation.Annotation;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,45 +15,31 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.stereotype.Service;
 
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated.RNAType;
-import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
 import com.spdeveloper.chgc.genome.dependencyDriver.RNAmmer;
 import com.spdeveloper.chgc.genome.dependencyDriver.RpsBlastProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.TRNAScan;
-import com.spdeveloper.chgc.genome.dependencyDriver.lagency.GlimmerGenePrediction;
-import com.spdeveloper.chgc.genome.dependencyDriver.lagency.ZcurveGenePrediction;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
-import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
-import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
-import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.util.zip.ZipDirectory;
-import com.spdeveloper.chgc.genome.visualization.entity.Wrapper;
+import com.spdeveloper.chgc.genome.visualization.service.COGColorParser;
 
 import reactor.core.publisher.Flux;
 
-//@Controller
-public class GenePredictionNAnnotationController2 {
+@Service
+public class FastaToAnnotationService {
+
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	GenePredictionParser genePredictionParser;
@@ -80,28 +59,15 @@ public class GenePredictionNAnnotationController2 {
 	RNAmmer rnammer;
 	@Autowired
 	AnnotationExcelWriter AnnotationExcelWriter;
-	
-	
-	
-	@PostMapping("/genomeAnnotation")
-	public ResponseEntity<Resource> handleFileUpload(@RequestParam("fas") MultipartFile fas) throws IOException, InterruptedException {
-		
-		String fastaName = "";
-		
-		List<RnaAnnotated> rnaAnnotateds = new ArrayList<>();
+
+	public Path start(Path fastaFile, Path destineyDir) throws IOException, InterruptedException {
 		
 		//save all the files under a temporary directory which is deleted later
 		Path tempDir = Files.createTempDirectory("genomeAnalysis");
 		
-		InputStream initialStream = fas.getInputStream();
-		byte[] buffer = new byte[initialStream.available()];
-		initialStream.read(buffer);
-				
-		Path fastaFile = Files.createTempFile(tempDir, "genomeAnalysis", "fasta.fas");
-		OutputStream outStream = new FileOutputStream(fastaFile.toFile());
-		outStream.write(buffer);
-		outStream.close();
-
+		String fastaName = "";
+		List<RnaAnnotated> rnaAnnotateds = new ArrayList<>();
+		
 		List<GenePrediction> genePrediction = genePredictionResultCombiner.combine(fastaFile.toFile(), tempDir);
 		fastaName = Files.readAllLines(fastaFile).get(0).split(">")[1]; 
 				
@@ -141,29 +107,24 @@ public class GenePredictionNAnnotationController2 {
 	    //WriteToFileUtil.writeToFile(geneAnnotateds, annotationFile);
 	    AnnotationExcelWriter.write(annotationFile, geneAnnotateds, rnaAnnotateds);
 	    
+	    //save file
+	    Path result = Paths.get(destineyDir.toAbsolutePath().toString(), fastaName+"_Annotation.zip");
 	    //zip resulting files: fasta(the input file), gene.fas, pr.fas, and Annotation.xlsx
-	    ByteArrayOutputStream zipBuffer = new ByteArrayOutputStream();
+	    FileOutputStream resultOutputStream = new FileOutputStream(result.toFile());
 	    HashMap<String, Path> resultingFiles = new HashMap<String, Path>(){{
 	    	put("gene.fas", geneFasFile);
 	    	put("pr.fas", translatedFile);
 	    	put("Annotation.xlsx", annotationFile);
 	    }};
 	    resultingFiles.put(fastaName+".fasta", fastaFile);
-	    ZipDirectory.doZipFiles(resultingFiles, zipBuffer);
-	    
-	    //ready the downloadable
-	    HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-		responseHeaders.set("charset", "utf-8");
-		responseHeaders.set("Content-disposition", "attachment; filename=" + fastaName+".zip");
-		Resource resource = new InputStreamResource(new ByteArrayInputStream(zipBuffer.toByteArray()));
-		ResponseEntity<Resource> result = new ResponseEntity<>(resource, responseHeaders, HttpStatus.OK);
-		
+	    ZipDirectory.doZipFiles(resultingFiles, resultOutputStream);
+	    resultOutputStream.close();
+	    	    
 		//delete all temporary files with the folder
 		log.info("Delete tempDir: " + tempDir.toFile().getAbsolutePath());
 		//log.info("Deletion Disabled, tempDir="+tempDir.toFile().getAbsolutePath());
 		FileUtils.deleteDirectory(tempDir.toFile());
 		
-		return result;
+		return result; 
 	}
 }

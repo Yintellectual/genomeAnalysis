@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +21,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
@@ -38,12 +41,34 @@ import reactor.core.publisher.Flux;
 
 @SpringBootApplication
 public class GenomeAnalysisApplication {
+	public static final String FASTA_FOR_ANNOTATION = "fasta_for_annotation";
+	public static final String ANNOTATIONS = "annotations";
+	public static final String ANNOTATION_FOR_VIRTUALIZATION  = "annotation_for_virtualization";
+	public static final String VIRTUALIZATIONS  = "virtualizations";
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public static void main(String[] args) {
 		SpringApplication.run(GenomeAnalysisApplication.class, args);
 	}
 
+	/*
+	 * MQ Schema（Copied from project GenomePortal, com.spdeveloper.chgc.genome.portal.GenomePortalApplication, 2018-06-11）:
+	 * 
+	 * The default exchange will direct messages into one of the four queues:
+	 * 
+	 * 1. fasta_for_annotation 2. annotations 3. annotation_for_virtualization  4. virtualizations
+	 * 
+	 * according to the specified queue name.
+	 * 
+	 */
+	@Bean
+	public Connection rabbitChannel() throws IOException, TimeoutException {
+		ConnectionFactory rabbitMQConnectionFactory = new ConnectionFactory();
+		rabbitMQConnectionFactory.setHost("localhost");
+		Connection rabbitMQConnection = rabbitMQConnectionFactory.newConnection();
+		return rabbitMQConnection;
+	}
+	
 	@Autowired
 	COGColorParser cOGColorParser;
 	@Autowired
