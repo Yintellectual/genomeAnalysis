@@ -105,7 +105,7 @@ public class AnnotationToVirtualizationService {
 					rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 				}else {
 					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, false);
-					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+VIRTUALIZATION_FAILED.toAbsolutePath().toString()).getBytes());
+					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(annotationZip.getParent().toString())).getBytes());
 				}
 				
 			}

@@ -85,7 +85,7 @@ public class FastaToAnnotationService {
 	@PostConstruct
 	public void registerToRabbitMQ() throws IOException {
 		
-		Path ANNOTATION_FAILED = Paths.get(permanentDirString, "ANNOTATION_FAILED");
+		
 		Channel rabbitMQChannel = rabbitMQConnection.createChannel();
 		rabbitMQChannel.queueDeclare(FASTA_FOR_ANNOTATION, true, false, false, null);
 		rabbitMQChannel.basicConsume(FASTA_FOR_ANNOTATION, false, new Consumer() {
@@ -126,7 +126,7 @@ public class FastaToAnnotationService {
 					rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 				}else {
 					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, false);	
-					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+ANNOTATION_FAILED.toAbsolutePath().toString()).getBytes());
+					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(fastaFile.getParent().toString(), "ANNOTATION_FAILED").toString()).getBytes());
 				}
 			}
 
