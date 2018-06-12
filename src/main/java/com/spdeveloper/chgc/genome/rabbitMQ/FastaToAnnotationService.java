@@ -114,7 +114,7 @@ public class FastaToAnnotationService {
 				
 				try {
 					annotationFile = start(fastaFile);
-				} catch (InterruptedException e) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					log.error("Exception during transforming fasta to annotation", e);
 				}

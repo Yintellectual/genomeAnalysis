@@ -92,7 +92,7 @@ public class AnnotationToVirtualizationService {
 				Path virtualizationZip = null;
 				try {
 					virtualizationZip = start(annotationZip);
-				} catch (IllegalClassFormatException e) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					log.error("Exception during transforming annotation to virtualization", e);
 				}
