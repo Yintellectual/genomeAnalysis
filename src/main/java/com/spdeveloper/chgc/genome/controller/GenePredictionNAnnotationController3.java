@@ -37,7 +37,6 @@ import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated.RNAType;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
-import com.spdeveloper.chgc.genome.annotation.service.FastaToAnnotationService;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
@@ -49,6 +48,7 @@ import com.spdeveloper.chgc.genome.dependencyDriver.lagency.ZcurveGenePrediction
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionResultCombiner;
+import com.spdeveloper.chgc.genome.rabbitMQ.FastaToAnnotationService;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
 import com.spdeveloper.chgc.genome.util.cmd.IntegratedProgram;
 import com.spdeveloper.chgc.genome.util.file.WriteToFileUtil;

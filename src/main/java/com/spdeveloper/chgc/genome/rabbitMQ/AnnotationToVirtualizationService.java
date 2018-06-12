@@ -1,4 +1,4 @@
-package com.spdeveloper.chgc.genome.annotation.service;
+package com.spdeveloper.chgc.genome.rabbitMQ;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +19,7 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.rabbitmq.client.Channel;
@@ -56,9 +57,14 @@ public class AnnotationToVirtualizationService {
 	@Autowired
 	Connection rabbitMQConnection;
 
+	@Value("${files.storage.local.permanent}")
+	String permanentDirString;
+
+	
 	@PostConstruct
 	public void registerToRabbitMQ() throws IOException {
 
+		Path VIRTUALIZATION_FAILED = Paths.get(permanentDirString, "VIRTUALIZATION_FAILED");
 		Channel rabbitMQChannel = rabbitMQConnection.createChannel();
 		rabbitMQChannel.queueDeclare(ANNOTATION_FOR_VIRTUALIZATION, true, false, false, null);
 		rabbitMQChannel.basicConsume(ANNOTATION_FOR_VIRTUALIZATION, false, new Consumer() {
@@ -98,7 +104,8 @@ public class AnnotationToVirtualizationService {
 
 					rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 				}else {
-					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, true);
+					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, false);
+					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+VIRTUALIZATION_FAILED.toAbsolutePath().toString()).getBytes());
 				}
 				
 			}

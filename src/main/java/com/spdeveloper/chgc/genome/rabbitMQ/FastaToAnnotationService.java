@@ -1,4 +1,4 @@
-package com.spdeveloper.chgc.genome.annotation.service;
+package com.spdeveloper.chgc.genome.rabbitMQ;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -19,6 +19,7 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.rabbitmq.client.Channel;
@@ -30,6 +31,7 @@ import com.rabbitmq.client.AMQP.BasicProperties;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated;
 import com.spdeveloper.chgc.genome.annotation.entity.RnaAnnotated.RNAType;
+import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.dependencyDriver.BlastAllProteinAnnotation;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneExtractor;
 import com.spdeveloper.chgc.genome.dependencyDriver.GeneToProteinTranslate;
@@ -44,6 +46,7 @@ import com.spdeveloper.chgc.genome.util.xml.M7Parser.BlastOutput;
 import com.spdeveloper.chgc.genome.util.xml.M7Parser.PrMatch;
 import com.spdeveloper.chgc.genome.util.zip.SpDeveloperZipUtil;
 import com.spdeveloper.chgc.genome.visualization.service.COGColorParser;
+
 
 import reactor.core.publisher.Flux;
 
@@ -74,9 +77,15 @@ public class FastaToAnnotationService {
 
 	@Autowired
 	Connection rabbitMQConnection;
+	
+	@Value("${files.storage.local.permanent}")
+	String permanentDirString;
+
 
 	@PostConstruct
 	public void registerToRabbitMQ() throws IOException {
+		
+		Path ANNOTATION_FAILED = Paths.get(permanentDirString, "ANNOTATION_FAILED");
 		Channel rabbitMQChannel = rabbitMQConnection.createChannel();
 		rabbitMQChannel.queueDeclare(FASTA_FOR_ANNOTATION, true, false, false, null);
 		rabbitMQChannel.basicConsume(FASTA_FOR_ANNOTATION, false, new Consumer() {
@@ -116,7 +125,8 @@ public class FastaToAnnotationService {
 				
 					rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 				}else {
-					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, true);	
+					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, false);	
+					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+ANNOTATION_FAILED.toAbsolutePath().toString()).getBytes());
 				}
 			}
 
