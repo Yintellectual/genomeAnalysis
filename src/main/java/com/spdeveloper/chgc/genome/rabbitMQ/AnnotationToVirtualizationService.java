@@ -101,13 +101,11 @@ public class AnnotationToVirtualizationService {
 					 rabbitMQChannel.queueDeclare(VIRTUALIZATIONS, true, false, false, null);
 					 rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null,
 							 (id+"@"+virtualizationZip.toAbsolutePath().toString()).getBytes());
-
-					rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 				}else {
-					rabbitMQChannel.basicNack(arg1.getDeliveryTag(), false, false);
+					
 					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(annotationZip.getParent().toString())).getBytes());
 				}
-				
+				rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 			}
 			
 			@Override
