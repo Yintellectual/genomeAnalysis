@@ -20,11 +20,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
+import com.spdeveloper.chgc.genome.annotation.service.AnnotationToVirtualizationService;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
@@ -79,6 +81,15 @@ public class GenomeAnalysisApplication {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 		writer.write(content);
 		writer.close();
+	}
+	
+	@Bean("annotationToVirtualizationService1")
+	public AnnotationToVirtualizationService annotationToVirtualizationService1() {
+		return new AnnotationToVirtualizationService();
+	}
+	@Bean("annotationToVirtualizationService2")
+	public AnnotationToVirtualizationService annotationToVirtualizationService2() {
+		return new AnnotationToVirtualizationService();
 	}
 	
 	@Bean
