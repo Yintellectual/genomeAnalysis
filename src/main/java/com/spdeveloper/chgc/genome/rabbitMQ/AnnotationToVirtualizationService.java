@@ -57,14 +57,11 @@ public class AnnotationToVirtualizationService {
 	@Autowired
 	Connection rabbitMQConnection;
 
-	@Value("${files.storage.local.permanent}")
-	String permanentDirString;
-
 	
 	@PostConstruct
 	public void registerToRabbitMQ() throws IOException {
 
-		Path VIRTUALIZATION_FAILED = Paths.get(permanentDirString, "VIRTUALIZATION_FAILED");
+		
 		Channel rabbitMQChannel = rabbitMQConnection.createChannel();
 		rabbitMQChannel.queueDeclare(ANNOTATION_FOR_VIRTUALIZATION, true, false, false, null);
 		rabbitMQChannel.basicConsume(ANNOTATION_FOR_VIRTUALIZATION, false, new Consumer() {
@@ -103,7 +100,7 @@ public class AnnotationToVirtualizationService {
 							 (id+"@"+virtualizationZip.toAbsolutePath().toString()).getBytes());
 				}else {
 					
-					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(annotationZip.getParent().toString())).getBytes());
+					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(annotationZip.getParent().toString(), "VIRTUALIZATION_FAILED")).getBytes());
 				}
 				rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 			}

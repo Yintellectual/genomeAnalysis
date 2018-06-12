@@ -78,9 +78,6 @@ public class FastaToAnnotationService {
 	@Autowired
 	Connection rabbitMQConnection;
 	
-	@Value("${files.storage.local.permanent}")
-	String permanentDirString;
-
 
 	@PostConstruct
 	public void registerToRabbitMQ() throws IOException {
@@ -123,7 +120,8 @@ public class FastaToAnnotationService {
 					rabbitMQChannel.queueDeclare(ANNOTATIONS, true, false, false, null);
 					rabbitMQChannel.basicPublish("", ANNOTATIONS, null, (id+"@"+annotationFile.toAbsolutePath().toString()).getBytes());
 				}else {
-					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(fastaFile.getParent().toString(), "ANNOTATION_FAILED").toString()).getBytes());
+					rabbitMQChannel.basicPublish("", ANNOTATIONS, null, (id+"@"+Paths.get(fastaFile.getParent().toString(), "ANNOTATION_FAILED").toString()).getBytes());
+					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(fastaFile.getParent().toString(), "VIRTUALIZATION_FAILED").toString()).getBytes());
 				}
 				rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 			}
