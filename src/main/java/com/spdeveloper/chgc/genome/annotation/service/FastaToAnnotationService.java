@@ -96,7 +96,10 @@ public class FastaToAnnotationService {
 			public void handleDelivery(String arg0, Envelope arg1, BasicProperties arg2, byte[] arg3)
 					throws IOException {
 
-				String fastaFileString = new String(arg3);
+				String message = new String(arg3);
+				String fastaFileString = message.split("@")[1];
+				String id = message.split("@")[0];
+				
 				Path fastaFile = Paths.get(fastaFileString);
 				Path annotationFile = null;
 				
@@ -109,7 +112,7 @@ public class FastaToAnnotationService {
 				
 				if(annotationFile!=null) {
 					rabbitMQChannel.queueDeclare(ANNOTATIONS, true, false, false, null);
-					rabbitMQChannel.basicPublish("", ANNOTATIONS, null, annotationFile.toAbsolutePath().toString().getBytes());
+					rabbitMQChannel.basicPublish("", ANNOTATIONS, null, (id+"@"+annotationFile.toAbsolutePath().toString()).getBytes());
 				
 					rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 				}else {
