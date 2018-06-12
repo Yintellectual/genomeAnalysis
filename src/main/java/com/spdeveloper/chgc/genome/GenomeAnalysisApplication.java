@@ -27,6 +27,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.spdeveloper.chgc.genome.annotation.entity.GeneAnnotated;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationExcelWriter;
 import com.spdeveloper.chgc.genome.annotation.service.AnnotationToVirtualizationService;
+import com.spdeveloper.chgc.genome.annotation.service.FastaToAnnotationService;
 import com.spdeveloper.chgc.genome.prediction.entity.GenePrediction;
 import com.spdeveloper.chgc.genome.prediction.service.GenePredictionParser;
 import com.spdeveloper.chgc.genome.util.cmd.ExecuteCommandAndReadResultingFile;
@@ -83,13 +84,13 @@ public class GenomeAnalysisApplication {
 		writer.close();
 	}
 	
-	@Bean("annotationToVirtualizationService1")
-	public AnnotationToVirtualizationService annotationToVirtualizationService1() {
-		return new AnnotationToVirtualizationService();
+	@Bean("fastaToAnnotationService1")
+	public FastaToAnnotationService annotationToVirtualizationService1() {
+		return new FastaToAnnotationService();
 	}
-	@Bean("annotationToVirtualizationService2")
-	public AnnotationToVirtualizationService annotationToVirtualizationService2() {
-		return new AnnotationToVirtualizationService();
+	@Bean("fastaToAnnotationService2")
+	public FastaToAnnotationService fastaToAnnotationService2() {
+		return new FastaToAnnotationService();
 	}
 	
 	@Bean
