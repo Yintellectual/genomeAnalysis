@@ -121,7 +121,6 @@ public class FastaToAnnotationService {
 					rabbitMQChannel.basicPublish("", ANNOTATIONS, null, (id+"@"+annotationFile.toAbsolutePath().toString()).getBytes());
 				}else {
 					rabbitMQChannel.basicPublish("", ANNOTATIONS, null, (id+"@"+Paths.get(fastaFile.getParent().toString(), "ANNOTATION_FAILED").toString()).getBytes());
-					rabbitMQChannel.basicPublish("", VIRTUALIZATIONS, null, (id+"@"+Paths.get(fastaFile.getParent().toString(), "VIRTUALIZATION_FAILED").toString()).getBytes());
 				}
 				rabbitMQChannel.basicAck(arg1.getDeliveryTag(), false);
 			}
