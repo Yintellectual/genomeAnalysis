@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -72,5 +73,20 @@ public class SpDeveloperZipUtil {
 		} else {
 			return newFile.toPath();
 		}
+	}
+	public static boolean isZip(File f) throws IOException {
+	    int fileSignature = 0;
+	    RandomAccessFile raf = null;
+	    try {
+	        raf = new RandomAccessFile(f, "r");
+	        fileSignature = raf.readInt();
+	    } catch (IOException e) {
+	        // handle if you like
+	    } finally {
+	        if(raf!=null) {
+	        	raf.close();
+	        }
+	    }
+	    return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
 	}
 }
